@@ -1993,3 +1993,105 @@ html{scroll-behavior:smooth}
     display:inline-block;
     padding:8px 4px;
 }
+
+
+/* ===== نافذة تفاصيل الوجهة ===== */
+.destination-card{cursor:pointer}
+.destination-card:focus-visible{outline:3px solid #d4af37;outline-offset:3px}
+body.modal-open{overflow:hidden}
+.dest-modal{position:fixed;inset:0;z-index:2000;display:flex;align-items:center;justify-content:center;padding:16px}
+.dest-modal[hidden]{display:none}
+.dest-modal__backdrop{position:absolute;inset:0;background:rgba(5,25,39,.72)}
+.dest-modal__box{position:relative;width:100%;max-width:440px;max-height:88vh;max-height:88dvh;overflow-y:auto;background:#fff;color:#102a43;border-radius:20px;padding:30px 22px 22px;box-shadow:0 20px 50px rgba(0,0,0,.35);animation:destPop .25s ease}
+@keyframes destPop{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.dest-modal__close{position:absolute;top:10px;left:12px;width:36px;height:36px;border:0;border-radius:50%;background:#eef2f6;color:#102a43;font-size:22px;line-height:1;cursor:pointer}
+.dest-modal__box h3{margin:0 0 6px;font-size:24px}
+.dest-modal__cities{margin:0 0 12px;color:#b8912a;font-weight:700}
+.dest-modal__box p{line-height:1.8}
+.dest-modal__facts{list-style:none;margin:16px 0;padding:0;display:grid;gap:10px}
+.dest-modal__facts li{background:#f4f7fa;border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:4px}
+.dest-modal__facts span{font-size:13px;color:#5b7083}
+.dest-modal__facts strong{font-size:15px}
+.dest-modal__book{display:block;text-align:center;background:#d4af37;color:#102a43;font-weight:800;text-decoration:none;padding:14px;border-radius:12px;transition:transform .25s ease,box-shadow .25s ease}
+.dest-modal__book:hover,.dest-modal__book:active{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.18)}
+
+
+/* ===== تطوير كروت الرحلات ===== */
+.trip-price{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:14px 0 4px;padding:10px 14px;background:#f4f7fa;border-radius:12px;font-size:14px}
+.trip-price span{color:#5b7083}
+.trip-price strong{color:#102a43}
+.trip-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:10px}
+.trip-book{display:inline-block;background:#d4af37;color:#102a43;font-weight:800;text-decoration:none;padding:10px 20px;border-radius:12px;transition:transform .25s ease,box-shadow .25s ease}
+.trip-book:hover,.trip-book:active{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.18)}
+
+
+/* ===== الأسئلة الشائعة ===== */
+.faq-list{max-width:760px;margin:0 auto;display:grid;gap:12px}
+.faq-item{background:#fff;border:1px solid #e3eaf1;border-radius:14px;overflow:hidden;transition:box-shadow .25s ease}
+.faq-item[open]{box-shadow:0 8px 24px rgba(16,42,67,.10);border-color:#d4af37}
+.faq-item summary{list-style:none;cursor:pointer;padding:16px 18px;font-weight:800;color:#102a43;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:"+";flex:none;width:28px;height:28px;border-radius:50%;background:#f4f7fa;color:#b8912a;font-size:20px;line-height:28px;text-align:center;transition:transform .25s ease}
+.faq-item[open] summary::after{content:"\2212";background:#d4af37;color:#102a43}
+.faq-item p{margin:0;padding:0 18px 18px;line-height:1.9;color:#3d5468}
+
+
+/* ===== أزرار التواصل ===== */
+.contact-btn.is-disabled{opacity:.55;pointer-events:none;cursor:default}
+
+.contact-buttons .contact-btn.is-disabled{
+    opacity:.55 !important;
+    pointer-events:none;
+    cursor:default;
+}
+
+
+/* ===== أزرار الهيرو الإضافية ===== */
+.hero-extra{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:14px}
+.hero-extra a{flex:1 1 140px;max-width:260px;text-align:center;text-decoration:none;font-weight:800;padding:14px 22px;border-radius:50px;transition:transform .25s ease,box-shadow .25s ease}
+.hero-extra a:hover,.hero-extra a:active{transform:translateY(-3px);box-shadow:0 10px 25px rgba(0,0,0,.25)}
+.hero-book{background:#d4af37;color:#102a43}
+.hero-wa{background:rgba(255,255,255,.14);color:#fff;border:2px solid rgba(255,255,255,.65)}
+.hero-wa.is-disabled{opacity:.55 !important;pointer-events:none;cursor:default}
+
+/* تبسيط الهيرو: إخفاء زر تواصل معنا */
+.hero-buttons .secondary-btn{display:none}
+
+/* الهيرو: إخفاء واتساب وتوسيع احجز رحلتك */
+.hero-wa{display:none !important}
+.hero-extra{margin-top:12px}
+.hero-extra a.hero-book{flex:1 1 100%;max-width:none}
+
+
+/* ===== روابط الفوتر القانونية ===== */
+.footer-legal{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 22px;margin:22px 0 4px;padding-top:18px;border-top:1px solid rgba(255,255,255,.14)}
+.footer-legal a{color:inherit;opacity:.85;text-decoration:none;font-size:14px;transition:color .25s ease,opacity .25s ease}
+.footer-legal a:hover{color:#d4af37;opacity:1}
+
+/* محرك بحث الرحلات */
+.trip-search{padding:26px 16px 6px}
+.trip-search__box{max-width:900px;margin:0 auto;background:#fff;border-radius:20px;padding:20px 16px;box-shadow:0 12px 34px rgba(16,42,67,.12);border:1px solid #e3eaf1}
+.trip-search__title{margin:0 0 14px;font-size:18px;color:#102a43;font-weight:800}
+.trip-search__grid{display:grid;grid-template-columns:1fr;gap:12px}
+.trip-search label{display:flex;flex-direction:column;gap:6px;font-size:13px;color:#5b7083;font-weight:700}
+.trip-search select,.trip-search input{width:100%;min-width:0;padding:12px;border:1px solid #d5dee8;border-radius:12px;background:#f8fafc;color:#102a43;font:inherit;font-size:15px}
+.trip-search__btn{width:100%;margin-top:14px;padding:14px;border:0;border-radius:12px;background:#d4af37;color:#102a43;font:inherit;font-weight:800;font-size:16px;cursor:pointer}
+@media (min-width:700px){.trip-search__grid{grid-template-columns:repeat(4,1fr)}.trip-search__btn{width:auto;min-width:200px}}
+
+/* البحث في الأعلى */
+.search-pill{flex:none;display:inline-flex;align-items:center;gap:6px;border:1.5px solid #d4af37;background:#fff;color:#102a43;font:inherit;font-weight:800;font-size:14px;padding:8px 14px;border-radius:50px;cursor:pointer;white-space:nowrap;transition:background .25s ease,box-shadow .25s ease}
+.search-pill:hover,.search-pill:active{background:#fdf6df;box-shadow:0 4px 14px rgba(16,42,67,.14)}
+.trip-search{display:none}
+.trip-search.is-open{display:block;position:fixed;left:0;right:0;z-index:1500;padding:10px 12px;max-height:calc(100dvh - 90px);overflow-y:auto}
+@media (max-width:380px){.search-pill{padding:7px 10px;font-size:13px}}
+
+html{scroll-padding-top:80px}
+
+.search-hit{outline:3px solid #d4af37;outline-offset:5px;border-radius:20px}
+
+/* اقتراحات الدول */
+.trip-search label{position:relative}
+.ts-suggest{position:absolute;top:100%;right:0;left:0;z-index:10;margin-top:4px;background:#fff;border:1px solid #e3eaf1;border-radius:12px;box-shadow:0 10px 26px rgba(16,42,67,.16);max-height:200px;overflow-y:auto}
+.ts-suggest[hidden]{display:none}
+.ts-suggest button{display:block;width:100%;text-align:right;padding:11px 14px;border:0;background:none;font:inherit;font-size:15px;color:#102a43;cursor:pointer}
+.ts-suggest button:hover,.ts-suggest button:active{background:#fdf6df}

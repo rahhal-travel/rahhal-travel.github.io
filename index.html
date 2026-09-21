@@ -22,14 +22,16 @@
             <span class="plane">✈️</span>
         </a>
 
+        <button type="button" class="search-pill" id="searchPill">🔍 ابحث عن رحلتك</button>
         <button class="menu-btn" aria-label="فتح القائمة">☰</button>
 
         <nav class="nav">
             <a href="#home">الرئيسية</a>
             <a href="#trips">الرحلات</a>
+            <a href="#destinations">الوجهات</a>
             <a href="#umrah">العمرة</a>
             <a href="#features">لماذا رحّال؟</a>
-            <a href="#destinations">الوجهات</a>
+            <a href="#faq">الأسئلة</a>
             <a href="#contact">تواصل معنا</a>
         </nav>
 
@@ -72,6 +74,33 @@
 
 </section>
 
+
+<section class="trip-search" id="search">
+    <div class="trip-search__box">
+        <p class="trip-search__title">🔍 ابحث عن رحلتك</p>
+        <div class="trip-search__grid">
+            <label>الوجهة
+                <input type="text" id="tsDest" list="tsDestList" placeholder="اكتب اسم الدولة" autocomplete="off">
+                <datalist id="tsDestList"><option value="تركيا"><option value="الإمارات"><option value="السعودية"><option value="تايلاند"><option value="اليونان"><option value="ماليزيا"><option value="مصر"><option value="قطر"><option value="الكويت"><option value="البحرين"><option value="سلطنة عمان"><option value="الأردن"><option value="المغرب"><option value="تونس"><option value="لبنان"><option value="أذربيجان"><option value="جورجيا"><option value="ألبانيا"><option value="البوسنة والهرسك"><option value="إندونيسيا"><option value="المالديف"><option value="سريلانكا"><option value="سنغافورة"><option value="اليابان"><option value="كوريا الجنوبية"><option value="الصين"><option value="الهند"><option value="فيتنام"><option value="إيطاليا"><option value="فرنسا"><option value="إسبانيا"><option value="ألمانيا"><option value="سويسرا"><option value="النمسا"><option value="هولندا"><option value="بريطانيا"><option value="البرتغال"><option value="التشيك"><option value="المجر"><option value="روسيا"><option value="أمريكا"><option value="كندا"><option value="أستراليا"><option value="جنوب أفريقيا"><option value="كينيا"><option value="تنزانيا"><option value="موريشيوس"><option value="سيشل"><option value="البرازيل"></datalist>
+            </label>
+            <label>نوع الرحلة
+                <select id="tsType">
+                    <option value="">أي نوع</option>
+                    <option>سياحة عالمية</option>
+                    <option>عمرة وزيارات</option>
+                    <option>رحلات ترفيهية</option>
+                </select>
+            </label>
+            <label>تاريخ السفر
+                <input type="date" id="tsDate">
+            </label>
+            <label>عدد الأشخاص
+                <input type="number" id="tsPeople" min="1" max="99" value="1" inputmode="numeric">
+            </label>
+        </div>
+        <button type="button" class="trip-search__btn" id="tsBtn">ابحث</button>
+    </div>
+</section>
 
 <section class="section trips-premium" id="trips">
 
@@ -135,123 +164,6 @@
                 <a class="trip-btn" href="#contact">اطلب التفاصيل ←</a>
             </div>
         </article>
-
-    </div>
-
-</section>
-
-
-<section class="section umrah-premium" id="umrah">
-
-    <div class="section-heading">
-        <span>عمرة وزيارات</span>
-        <h2>رحلات العمرة</h2>
-        <p>خطط لرحلة عمرتك معنا واستمتع بتجربة منظمة ومريحة.</p>
-    </div>
-
-    <div class="umrah-box">
-
-        <div class="umrah-icon">🕋</div>
-
-        <div class="umrah-content">
-            <span class="umrah-label">رحلة إيمانية</span>
-
-            <h3>مكة والمدينة في رحلة واحدة</h3>
-
-            <p>
-                برامج متنوعة للعمرة والزيارات، مع خيارات تناسب
-                احتياجات الأفراد والعائلات.
-            </p>
-
-            <div class="umrah-features">
-                <span>🕋 مكة المكرمة</span>
-                <span>🕌 المدينة المنورة</span>
-                <span>📋 برامج متنوعة</span>
-            </div>
-
-            <a href="#contact" class="umrah-btn">
-                استفسر عن برامج العمرة ←
-            </a>
-        </div>
-
-    </div>
-
-</section>
-
-
-<section class="features" id="features">
-
-    <div class="section-heading">
-        <span>لماذا رحّال؟</span>
-        <h2>نسافر معك خطوة بخطوة</h2>
-        <p>نهتم بالتفاصيل لتعيش تجربة سفر أسهل وأكثر راحة.</p>
-    </div>
-
-    <div class="features-grid">
-
-        <article class="feature">
-            <div class="feature-icon">🧳</div>
-            <h3>تنظيم الرحلة</h3>
-            <p>نساعدك في ترتيب تفاصيل رحلتك من البداية حتى العودة.</p>
-        </article>
-
-        <article class="feature">
-            <div class="feature-icon">💬</div>
-            <h3>تواصل مستمر</h3>
-            <p>نحن قريبون منك قبل وأثناء الرحلة للإجابة عن استفساراتك.</p>
-        </article>
-
-        <article class="feature">
-            <div class="feature-icon">🌍</div>
-            <h3>وجهات متنوعة</h3>
-            <p>اكتشف أماكن وتجارب مختلفة تناسب خطط السفر المتنوعة.</p>
-        </article>
-
-        <article class="feature">
-            <div class="feature-icon">❤️</div>
-            <h3>نهتم بتجربتك</h3>
-            <p>نهتم بالتفاصيل التي تساعدك على الاستمتاع برحلتك.</p>
-        </article>
-
-    </div>
-
-</section>
-
-
-<section class="cta contact-premium" id="contact">
-
-    <div class="contact-wrapper">
-
-        <div class="contact-content">
-            <span class="contact-label">تواصل مع رحّال</span>
-
-            <h2>جاهز تبدأ رحلتك؟ ✈️</h2>
-
-            <p>
-                أخبرنا بالوجهة التي ترغب في السفر إليها،
-                وساعدك في معرفة البرامج والتفاصيل المناسبة لرحلتك.
-            </p>
-
-            <div class="contact-buttons">
-
-                <a href="https://wa.me/" class="contact-btn whatsapp-btn">
-                    💬 تواصل عبر واتساب
-                </a>
-
-                <a href="tel:" class="contact-btn call-btn">
-                    📞 اتصل بنا
-                </a>
-
-            </div>
-
-            <div class="contact-note">
-                🌍 رحلات سياحية • 🕋 عمرة • ✈️ سفر
-            </div>
-        </div>
-
-        <div class="contact-icon">
-            ✈️
-        </div>
 
     </div>
 
@@ -332,6 +244,165 @@
 
 </section>
 
+<section class="section umrah-premium" id="umrah">
+
+    <div class="section-heading">
+        <span>عمرة وزيارات</span>
+        <h2>رحلات العمرة</h2>
+        <p>خطط لرحلة عمرتك معنا واستمتع بتجربة منظمة ومريحة.</p>
+    </div>
+
+    <div class="umrah-box">
+
+        <div class="umrah-icon">🕋</div>
+
+        <div class="umrah-content">
+            <span class="umrah-label">رحلة إيمانية</span>
+
+            <h3>مكة والمدينة في رحلة واحدة</h3>
+
+            <p>
+                برامج متنوعة للعمرة والزيارات، مع خيارات تناسب
+                احتياجات الأفراد والعائلات.
+            </p>
+
+            <div class="umrah-features">
+                <span>🕋 مكة المكرمة</span>
+                <span>🕌 المدينة المنورة</span>
+                <span>📋 برامج متنوعة</span>
+            </div>
+
+            <a href="#contact" class="umrah-btn">
+                استفسر عن برامج العمرة ←
+            </a>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="features" id="features">
+
+    <div class="section-heading">
+        <span>لماذا رحّال؟</span>
+        <h2>نسافر معك خطوة بخطوة</h2>
+        <p>نهتم بالتفاصيل لتعيش تجربة سفر أسهل وأكثر راحة.</p>
+    </div>
+
+    <div class="features-grid">
+
+        <article class="feature">
+            <div class="feature-icon">🧳</div>
+            <h3>تنظيم الرحلة</h3>
+            <p>نساعدك في ترتيب تفاصيل رحلتك من البداية حتى العودة.</p>
+        </article>
+
+        <article class="feature">
+            <div class="feature-icon">💬</div>
+            <h3>تواصل مستمر</h3>
+            <p>نحن قريبون منك قبل وأثناء الرحلة للإجابة عن استفساراتك.</p>
+        </article>
+
+        <article class="feature">
+            <div class="feature-icon">🌍</div>
+            <h3>وجهات متنوعة</h3>
+            <p>اكتشف أماكن وتجارب مختلفة تناسب خطط السفر المتنوعة.</p>
+        </article>
+
+        <article class="feature">
+            <div class="feature-icon">❤️</div>
+            <h3>نهتم بتجربتك</h3>
+            <p>نهتم بالتفاصيل التي تساعدك على الاستمتاع برحلتك.</p>
+        </article>
+
+    </div>
+
+</section>
+
+
+<section class="section faq-section" id="faq">
+    <div class="section-heading">
+        <span>أسئلة شائعة</span>
+        <h2>كل ما تريد معرفته</h2>
+        <p>إجابات سريعة عن أكثر الأسئلة التي تصلنا.</p>
+    </div>
+    <div class="faq-list">
+        <details class="faq-item">
+            <summary>ما الخدمات التي يقدمها رحّال؟</summary>
+            <p>ننظم رحلات سياحية إلى وجهات متنوعة، ورحلات عمرة وزيارات، ورحلات ترفيهية للعائلات والأصدقاء والأفراد.</p>
+        </details>
+        <details class="faq-item">
+            <summary>هل توجد رحلات عمرة؟</summary>
+            <p>نعم، لدينا برامج عمرة متنوعة تشمل مكة والمدينة بخيارات تناسب الأفراد والعائلات. تواصل معنا لمعرفة المتاح.</p>
+        </details>
+        <details class="faq-item">
+            <summary>كيف أحجز؟</summary>
+            <p>اختر الوجهة أو الرحلة التي تناسبك واضغط "احجز الآن"، أو تواصل معنا مباشرة، وسنساعدك في إتمام الحجز خطوة بخطوة.</p>
+        </details>
+        <details class="faq-item">
+            <summary>هل يمكن تخصيص الرحلة؟</summary>
+            <p>نعم، يمكن ترتيب برنامج يناسب ميزانيتك ووقتك واهتماماتك. أخبرنا بما تريد وسنقترح عليك الأنسب.</p>
+        </details>
+        <details class="faq-item">
+            <summary>كيف أتواصل مع رحّال؟</summary>
+            <p>عبر واتساب أو الاتصال الهاتفي من قسم "تواصل معنا"، وسنرد عليك في أقرب وقت.</p>
+        </details>
+        <details class="faq-item">
+            <summary>هل يوجد تقسيط؟</summary>
+            <p>يمكنك الاستفسار عن خيارات الدفع المتاحة لكل برنامج عند التواصل معنا، ونوضحها لك قبل الحجز.</p>
+        </details>
+        <details class="faq-item">
+            <summary>ماذا يشمل السعر؟</summary>
+            <p>يختلف ما يشمله السعر من برنامج لآخر (مثل الإقامة والمواصلات والوجبات)، ونوضح لك التفاصيل كاملة قبل تأكيد الحجز.</p>
+        </details>
+        <details class="faq-item">
+            <summary>ما الأوراق المطلوبة للعمرة؟</summary>
+            <p>غالبًا جواز سفر ساري المفعول وصور شخصية، وقد تختلف المتطلبات حسب الجنسية والموسم. نوضح لك المطلوب بدقة عند التواصل.</p>
+        </details>
+    </div>
+</section>
+
+<section class="cta contact-premium" id="contact">
+
+    <div class="contact-wrapper">
+
+        <div class="contact-content">
+            <span class="contact-label">تواصل مع رحّال</span>
+
+            <h2>جاهز تبدأ رحلتك؟ ✈️</h2>
+
+            <p>
+                أخبرنا بالوجهة التي ترغب في السفر إليها،
+                وساعدك في معرفة البرامج والتفاصيل المناسبة لرحلتك.
+            </p>
+
+            <div class="contact-buttons">
+
+                <a href="https://wa.me/" class="contact-btn whatsapp-btn">
+                    💬 تواصل عبر واتساب
+                </a>
+
+                <a href="tel:" class="contact-btn call-btn">
+                    📞 اتصل بنا
+                </a>
+
+            </div>
+
+            <div class="contact-note">
+                🌍 رحلات سياحية • 🕋 عمرة • ✈️ سفر
+            </div>
+        </div>
+
+        <div class="contact-icon">
+            ✈️
+        </div>
+
+    </div>
+
+</section>
+
+
 </main>
 
 
@@ -383,12 +454,302 @@ document.querySelectorAll(".nav a").forEach(link => {
 
     </div>
 
-    <div class="footer-bottom">
+    <div class="footer-legal"><a href="privacy.html">سياسة الخصوصية</a><a href="terms.html">الشروط والأحكام</a></div>
+
+<div class="footer-bottom">
         <span>© 2026 رحّال — جميع الحقوق محفوظة</span>
         <span>صُمم بشغف للسفر ✈️</span>
     </div>
 
 </footer>
+
+
+<div class="dest-modal" id="destModal" hidden>
+  <div class="dest-modal__backdrop" data-close></div>
+  <div class="dest-modal__box" role="dialog" aria-modal="true" aria-labelledby="destTitle">
+    <button class="dest-modal__close" data-close aria-label="إغلاق">×</button>
+    <h3 id="destTitle"></h3>
+    <p class="dest-modal__cities" id="destCities"></p>
+    <p id="destDesc"></p>
+    <ul class="dest-modal__facts">
+      <li><span>أفضل وقت للزيارة</span><strong id="destBest"></strong></li>
+      <li><span>نوع الرحلة</span><strong id="destType"></strong></li>
+    </ul>
+    <a class="dest-modal__book" id="destBook" href="#contact">احجز الآن</a>
+  </div>
+</div>
+<script>
+/* رقم واتساب بالصيغة الدولية بدون + وبدون مسافات، مثال: 201234567890 */
+const RAHHAL_PHONE = "";
+function waLink(msg){
+  return RAHHAL_PHONE ? "https://wa.me/" + RAHHAL_PHONE + "?text=" + encodeURIComponent(msg) : "#contact";
+}
+const DEST_INFO = {
+  "تركيا": {desc:"بين تاريخ إسطنبول وسواحل أنطاليا وطبيعة طرابزون الخضراء، وجهة تناسب العائلات والأصدقاء.", best:"الربيع والخريف (أبريل–يونيو وسبتمبر–أكتوبر)", type:"سياحة ثقافية وطبيعة وتسوق"},
+  "الإمارات": {desc:"دبي وأبوظبي والشارقة: ناطحات سحاب وشواطئ ومراكز تسوق وتجارب ثقافية في رحلة واحدة.", best:"من نوفمبر إلى مارس", type:"ترفيهية وتسوق وعائلية"},
+  "السعودية": {desc:"مكة والمدينة وجدة: رحلات عمرة وزيارات ببرامج مريحة تناسب الأفراد والعائلات.", best:"الشتاء عادةً أخف طقسًا، ومواعيد العمرة تتغير حسب الموسم", type:"عمرة وزيارات"},
+  "تايلاند": {desc:"بانكوك وبوكيت وكرابي: أسواق نابضة وشواطئ وجزر وأكل شوارع مميز.", best:"من نوفمبر إلى فبراير", type:"ترفيهية وشواطئ"},
+  "اليونان": {desc:"أثينا وسانتوريني وميكونوس: آثار عريقة وجزر بيضاء وغروب لا يُنسى.", best:"من مايو إلى أكتوبر", type:"ترفيهية وجزر وثقافة"},
+  "ماليزيا": {desc:"كوالالمبور ولنكاوي وبينانج: مدن حديثة وجزر وطبيعة استوائية.", best:"يختلف حسب الجزيرة، وغالبًا من ديسمبر إلى مارس", type:"ترفيهية وطبيعة وتسوق"}
+};
+(function(){
+  const modal = document.getElementById("destModal");
+  if(!modal) return;
+  const $ = function(id){ return document.getElementById(id); };
+  let lastFocus = null;
+  function openModal(card){
+    const h3 = card.querySelector("h3");
+    if(!h3) return;
+    const name = h3.textContent.replace(/[^\u0600-\u06FF\s]/g,"").trim();
+    const info = DEST_INFO[name];
+    if(!info) return;
+    const p = card.querySelector(".destination-info p");
+    $("destTitle").textContent = name;
+    $("destCities").textContent = p ? p.textContent : "";
+    $("destDesc").textContent = info.desc;
+    $("destBest").textContent = info.best;
+    $("destType").textContent = info.type;
+    const b = $("destBook");
+    b.href = waLink("مرحبًا رحّال، أرغب في الاستفسار عن رحلة إلى " + name);
+    if(RAHHAL_PHONE){ b.target = "_blank"; b.rel = "noopener"; } else { b.removeAttribute("target"); }
+    lastFocus = document.activeElement;
+    modal.hidden = false;
+    document.body.classList.add("modal-open");
+    modal.querySelector(".dest-modal__close").focus();
+  }
+  function closeModal(){
+    modal.hidden = true;
+    document.body.classList.remove("modal-open");
+    if(lastFocus) lastFocus.focus();
+  }
+  document.querySelectorAll(".destination-card").forEach(function(card){
+    card.setAttribute("tabindex","0");
+    card.setAttribute("role","button");
+    card.addEventListener("click", function(e){ e.preventDefault(); openModal(card); });
+    card.addEventListener("keydown", function(e){
+      if(e.key === "Enter" || e.key === " "){ e.preventDefault(); openModal(card); }
+    });
+  });
+  modal.addEventListener("click", function(e){
+    if(e.target.hasAttribute("data-close")) closeModal();
+  });
+  $("destBook").addEventListener("click", function(){ if(!RAHHAL_PHONE) closeModal(); });
+  document.addEventListener("keydown", function(e){
+    if(e.key === "Escape" && !modal.hidden) closeModal();
+  });
+})();
+</script>
+
+
+<script>
+/* TRIP_ENHANCE */
+(function(){
+  document.querySelectorAll(".trip-card").forEach(function(card){
+    const content = card.querySelector(".trip-content");
+    const oldBtn = card.querySelector(".trip-btn");
+    const h3 = card.querySelector("h3");
+    if(!content || !oldBtn || !h3) return;
+    const price = document.createElement("div");
+    price.className = "trip-price";
+    price.innerHTML = "<span>السعر</span><strong>استفسر عن السعر</strong>";
+    const actions = document.createElement("div");
+    actions.className = "trip-actions";
+    const book = document.createElement("a");
+    book.className = "trip-book";
+    book.textContent = "احجز الآن";
+    book.href = waLink("مرحبًا رحّال، أرغب في الاستفسار عن " + h3.textContent.trim());
+    if(RAHHAL_PHONE){ book.target = "_blank"; book.rel = "noopener"; }
+    oldBtn.parentNode.insertBefore(price, oldBtn);
+    oldBtn.parentNode.insertBefore(actions, oldBtn);
+    actions.appendChild(book);
+    actions.appendChild(oldBtn);
+  });
+})();
+</script>
+
+
+<script>
+/* CONTACT_WIRE */
+(function(){
+  const wa = document.querySelector(".contact-buttons .whatsapp-btn");
+  const call = document.querySelector(".contact-buttons .call-btn");
+  if(RAHHAL_PHONE){
+    if(wa){ wa.href = waLink("مرحبًا رحّال، أرغب في الاستفسار عن رحلة"); wa.target = "_blank"; wa.rel = "noopener"; }
+    if(call){ call.href = "tel:+" + RAHHAL_PHONE; }
+  } else {
+    [wa, call].forEach(function(b){
+      if(b){ b.classList.add("is-disabled"); b.removeAttribute("href"); b.setAttribute("aria-disabled","true"); }
+    });
+  }
+})();
+</script>
+
+
+<script>
+/* HERO_CTA */
+(function(){
+  const box = document.querySelector(".hero-buttons");
+  if(!box) return;
+  const row = document.createElement("div");
+  row.className = "hero-extra";
+  const book = document.createElement("a");
+  book.className = "hero-book";
+  book.textContent = "احجز رحلتك";
+  book.href = waLink("مرحبًا رحّال، أرغب في حجز رحلة");
+  const wa = document.createElement("a");
+  wa.className = "hero-wa";
+  wa.textContent = "💬 واتساب";
+  if(RAHHAL_PHONE){
+    wa.href = waLink("السلام عليكم، أريد الاستفسار عن رحلة");
+    [book, wa].forEach(function(a){ a.target = "_blank"; a.rel = "noopener"; });
+  } else {
+    wa.classList.add("is-disabled");
+    wa.setAttribute("aria-disabled","true");
+  }
+  row.appendChild(book);
+  row.appendChild(wa);
+  box.parentNode.insertBefore(row, box.nextSibling);
+})();
+</script>
+
+
+<script>
+/* MENU_OUTSIDE */
+(function(){
+  var btn = document.querySelector(".menu-btn");
+  var navEl = document.querySelector(".nav");
+  if(!btn || !navEl) return;
+  document.addEventListener("click", function(e){
+    if(navEl.classList.contains("active") && !navEl.contains(e.target) && !btn.contains(e.target)){
+      navEl.classList.remove("active");
+    }
+  });
+})();
+</script>
+
+
+<script>
+/* TRIP_SEARCH */
+(function(){
+  var btn = document.getElementById("tsBtn");
+  var destEl = document.getElementById("tsDest");
+  var typeEl = document.getElementById("tsType");
+  var d = document.getElementById("tsDate");
+  if(!btn || !destEl || !typeEl || !d) return;
+  var t = new Date();
+  d.min = t.getFullYear() + "-" + String(t.getMonth()+1).padStart(2,"0") + "-" + String(t.getDate()).padStart(2,"0");
+
+  var countries = [];
+  document.querySelectorAll("#tsDestList option").forEach(function(o){ countries.push(o.value); });
+  destEl.removeAttribute("list");
+
+  var box = document.createElement("div");
+  box.className = "ts-suggest";
+  box.hidden = true;
+  destEl.parentNode.appendChild(box);
+
+  function norm(x){
+    return x.replace(/[أإآ]/g, "ا").trim();
+  }
+  function showSuggest(){
+    var q = norm(destEl.value);
+    box.innerHTML = "";
+    if(!q){ box.hidden = true; return; }
+    var starts = countries.filter(function(c){ return norm(c).indexOf(q) === 0; });
+    var has = countries.filter(function(c){ return norm(c).indexOf(q) > 0; });
+    var list = starts.concat(has).slice(0, 8);
+    if(!list.length){ box.hidden = true; return; }
+    list.forEach(function(c){
+      var b = document.createElement("button");
+      b.type = "button";
+      b.textContent = c;
+      b.addEventListener("mousedown", function(e){ e.preventDefault(); });
+      b.addEventListener("click", function(){
+        destEl.value = c;
+        box.hidden = true;
+        fillTypes();
+      });
+      box.appendChild(b);
+    });
+    box.hidden = false;
+  }
+
+  var GROUPS = [
+    ["رحلات سياحية", ["سياحة عالمية","رحلات ترفيهية","شهر العسل","رحلات جماعية"]],
+    ["أغراض أخرى", ["سفر عمل","دراسة وتعليم","سياحة علاجية"]]
+  ];
+  function fillTypes(){
+    var keep = typeEl.value;
+    typeEl.innerHTML = "";
+    var first = document.createElement("option");
+    first.value = "";
+    first.textContent = "أي نوع";
+    typeEl.appendChild(first);
+    var groups = GROUPS.slice();
+    if(norm(destEl.value) === "السعودية"){
+      groups = [["رحلات دينية", ["عمرة وحج"]]].concat(groups);
+    }
+    groups.forEach(function(g){
+      var og = document.createElement("optgroup");
+      og.label = g[0];
+      g[1].forEach(function(x){
+        var o = document.createElement("option");
+        o.textContent = x;
+        og.appendChild(o);
+      });
+      typeEl.appendChild(og);
+    });
+    typeEl.value = keep;
+  }
+  fillTypes();
+
+  destEl.addEventListener("input", function(){ showSuggest(); fillTypes(); });
+  destEl.addEventListener("focus", showSuggest);
+  document.addEventListener("click", function(e){
+    if(!box.contains(e.target) && e.target !== destEl){ box.hidden = true; }
+  });
+
+  btn.addEventListener("click", function(){
+    var dest = destEl.value.trim();
+    var type = typeEl.value;
+    var people = document.getElementById("tsPeople").value || "1";
+    box.hidden = true;
+    if(RAHHAL_PHONE){
+      var msg = "السلام عليكم، أريد الاستفسار عن رحلة";
+      if(dest) msg += " إلى " + dest;
+      if(type) msg += "، نوع الرحلة: " + type;
+      if(d.value) msg += "، تاريخ السفر: " + d.value;
+      msg += "، عدد الأشخاص: " + people;
+      window.open(waLink(msg), "_blank", "noopener");
+      return;
+    }
+    setTimeout(function(){
+      var target = document.querySelector(".contact-buttons") || document.getElementById("contact");
+      if(target) target.scrollIntoView({behavior:"smooth", block:"center"});
+    }, 80);
+  });
+})();
+</script>
+
+
+<script>
+/* SEARCH_TOP */
+(function(){
+  var pill = document.getElementById("searchPill");
+  var panel = document.getElementById("search");
+  var hdr = document.querySelector(".header");
+  if(!pill || !panel) return;
+  function openP(){ panel.style.top = (hdr ? hdr.offsetHeight : 70) + "px"; panel.classList.add("is-open"); }
+  function closeP(){ panel.classList.remove("is-open"); }
+  pill.addEventListener("click", function(){ panel.classList.contains("is-open") ? closeP() : openP(); });
+  document.addEventListener("click", function(e){
+    if(panel.classList.contains("is-open") && !panel.contains(e.target) && !pill.contains(e.target)) closeP();
+  });
+  var b = document.getElementById("tsBtn");
+  if(b) b.addEventListener("click", closeP);
+  document.addEventListener("keydown", function(e){ if(e.key === "Escape") closeP(); });
+})();
+</script>
 
 </body>
 </html>
