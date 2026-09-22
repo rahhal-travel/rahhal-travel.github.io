@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://rahhal-travel.github.io/">
-    <meta name="description" content="رحّال — اكتشف رحلات سياحية وعمرة وبرامج سفر إلى وجهات مميزة. اختر رحلتك أو صمّم رحلتك الخاصة واستفسر عن السعر عبر واتساب.">
+    <meta name="description" content="رحّال — اكتشف رحلات سياحية وعمرة وبرامج سفر إلى وجهات مميزة. اختر رحلتك أو جاهز تبدأ رحلتك؟ الخاصة واستفسر عن السعر عبر واتساب.">
     <title>رحّال | رحلات وسياحة وعمرة</title>
     <link rel="stylesheet" href="style.css">
     <meta property="og:type" content="website">
@@ -240,64 +240,6 @@
 </section>
 
 
-
-<section class="custom-trip" id="custom-trip">
-  <div class="custom-trip__inner">
-    <div class="section-heading">
-      <span>رحلتك على ذوقك</span>
-      <h2>صمّم رحلتك مع رحّال</h2>
-      <p>مش لاقي البرنامج المناسب؟ اختار احتياجاتك وإحنا نساعدك في تجهيز الرحلة المناسبة.</p>
-    </div>
-
-    <form class="custom-trip-form" id="customTripForm">
-      <div class="custom-field">
-        <label for="customDestination">الوجهة</label>
-        <select id="customDestination">
-          <option value="لم أحدد بعد">لم أحدد بعد</option>
-          <option>تركيا</option>
-          <option>الإمارات</option>
-          <option>السعودية</option>
-          <option>تايلاند</option>
-          <option>اليونان</option>
-          <option>ماليزيا</option>
-        </select>
-      </div>
-
-      <div class="custom-field">
-        <label for="customType">نوع الرحلة</label>
-        <select id="customType">
-          <option>سياحة</option>
-          <option>عائلية</option>
-          <option>ترفيهية</option>
-          <option>عمرة</option>
-          <option>شهر عسل</option>
-        </select>
-      </div>
-
-      <div class="custom-field">
-        <label for="customPeople">عدد المسافرين</label>
-        <select id="customPeople">
-          <option>1 - 2</option>
-          <option>3 - 5</option>
-          <option>6 - 10</option>
-          <option>أكثر من 10</option>
-        </select>
-      </div>
-
-      <div class="custom-field">
-        <label for="customDuration">المدة</label>
-        <select id="customDuration">
-          <option>أقل من أسبوع</option>
-          <option>7 - 10 أيام</option>
-          <option>10 - 14 يوم</option>
-          <option>أكثر من أسبوعين</option>
-        </select>
-      </div>
-
-      <button type="submit" class="custom-trip-submit">أرسل طلب الرحلة عبر واتساب</button>
-    </form>
-  </div>
-</section>
 
 <section class="destinations" id="destinations">
 
@@ -952,6 +894,61 @@ function closeTrip(){document.getElementById("trip-details").hidden=true;documen
       "📅 المدة: " + duration;
 
     window.open("https://wa.me/" + RAHHAL_WHATSAPP + "?text=" + msg, "_blank");
+  });
+})();
+</script>
+
+
+<script>
+/* SEARCH_FINAL */
+(function(){
+  const btn = document.getElementById("tsBtn");
+  if(!btn) return;
+
+  btn.addEventListener("click", function(e){
+    e.preventDefault();
+
+    const search = document.getElementById("tripSearch") ||
+                   document.querySelector(".trip-search");
+
+    if(!search) return;
+
+    const selects = search.querySelectorAll("select");
+    let selected = false;
+
+    selects.forEach(function(select){
+      if(select.value && select.value.trim() !== "" &&
+         select.value !== "all" &&
+         select.value !== "اختر") {
+        selected = true;
+      }
+    });
+
+    /*
+      لو مفيش أي اختيار:
+      لا انتقال، لا واتساب، لا رسالة.
+    */
+    if(!selected) return;
+
+    const params = [];
+
+    selects.forEach(function(select){
+      if(select.value && select.value.trim() !== ""){
+        params.push(select.value.trim());
+      }
+    });
+
+    const message =
+      "مرحبًا رحّال، أرغب في الاستفسار عن رحلة مناسبة لي." +
+      (params.length ? "\nاختياراتي: " + params.join(" - ") : "");
+
+    if(typeof RAHHAL_WHATSAPP !== "undefined" && RAHHAL_WHATSAPP){
+      window.open(
+        "https://wa.me/" + RAHHAL_WHATSAPP +
+        "?text=" + encodeURIComponent(message),
+        "_blank"
+      );
+    }
   });
 })();
 </script>
