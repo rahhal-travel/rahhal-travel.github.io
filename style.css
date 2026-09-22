@@ -2459,7 +2459,19 @@ footer .rahhal-word,
 }
 
 
-/* SEARCH COMPLETED HIDE */
-.trip-search.search-completed{
-  display:none !important;
+
+
+
+/* RAHHAL SEARCH CLEAN FINAL */
+
+.trip-search input.search-required-error,
+.trip-search select.search-required-error {
+    border: 3px solid #d93025 !important;
+    background: #fff7f7 !important;
+    box-shadow: 0 0 0 3px rgba(217, 48, 37, 0.12) !important;
+    outline: none !important;
+}
+
+.trip-search.search-success-hidden {
+    display: none !important;
 }

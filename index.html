@@ -94,11 +94,11 @@
         <p class="trip-search__title">🔍 ابحث عن رحلتك</p>
         <div class="trip-search__grid">
             <label>الوجهة
-                <input type="text" id="tsDest" list="tsDestList" placeholder="اكتب اسم الدولة" autocomplete="off">
+                <input type="text" id="tsDest" required required list="tsDestList" placeholder="اكتب اسم الدولة" autocomplete="off">
                 <datalist id="tsDestList"><option value="تركيا"><option value="الإمارات"><option value="السعودية"><option value="تايلاند"><option value="اليونان"><option value="ماليزيا"><option value="مصر"><option value="قطر"><option value="الكويت"><option value="البحرين"><option value="سلطنة عمان"><option value="الأردن"><option value="المغرب"><option value="تونس"><option value="لبنان"><option value="أذربيجان"><option value="جورجيا"><option value="ألبانيا"><option value="البوسنة والهرسك"><option value="إندونيسيا"><option value="المالديف"><option value="سريلانكا"><option value="سنغافورة"><option value="اليابان"><option value="كوريا الجنوبية"><option value="الصين"><option value="الهند"><option value="فيتنام"><option value="إيطاليا"><option value="فرنسا"><option value="إسبانيا"><option value="ألمانيا"><option value="سويسرا"><option value="النمسا"><option value="هولندا"><option value="بريطانيا"><option value="البرتغال"><option value="التشيك"><option value="المجر"><option value="روسيا"><option value="أمريكا"><option value="كندا"><option value="أستراليا"><option value="جنوب أفريقيا"><option value="كينيا"><option value="تنزانيا"><option value="موريشيوس"><option value="سيشل"><option value="البرازيل"></datalist>
             </label>
             <label>نوع الرحلة
-                <select id="tsType">
+                <select id="tsType" required required>
                     <option value="">أي نوع</option>
                     <option>سياحة عالمية</option>
                     <option>عمرة وزيارات</option>
@@ -106,10 +106,10 @@
                 </select>
             </label>
             <label>تاريخ السفر
-                <input type="date" id="tsDate">
+                <input type="date" id="tsDate" required>
             </label>
             <label>عدد الأشخاص
-                <input type="number" id="tsPeople" min="1" max="99" value="1" inputmode="numeric">
+                <input type="number" id="tsPeople" required min="1" max="99" value="1" inputmode="numeric">
             </label>
         </div>
         <button class="trip-search__btn" id="tsBtn" type="button">ابحث</button>
@@ -911,74 +911,129 @@ function closeTrip(){document.getElementById("trip-details").hidden=true;documen
 
 
 
+
+
+
+
+
+
 <script>
-/* RAHHAL_SEARCH_ONE_FINAL */
-(function(){
-  var btn = document.getElementById("tsBtn");
-  var searchBox = document.querySelector(".trip-search");
+/* RAHHAL_SEARCH_CLEAN_FINAL */
+(function () {
 
-  if(!btn || !searchBox) return;
+    const btn = document.getElementById("tsBtn");
+    const searchBox = document.querySelector(".trip-search");
 
-  btn.type = "button";
+    if (!btn || !searchBox) return;
 
-  btn.addEventListener("click", function(e){
-    e.preventDefault();
-    e.stopImmediatePropagation();
+    const fields = [
+        document.getElementById("tsDest"),
+        document.getElementById("tsType"),
+        document.getElementById("tsDate"),
+        document.getElementById("tsPeople")
+    ];
 
-    var fields = searchBox.querySelectorAll("select, input");
+    function valueOf(field) {
+        return field ? String(field.value || "").trim() : "";
+    }
 
-    var valid = true;
+    function clearError(field) {
+        if (field) {
+            field.classList.remove("search-required-error");
+        }
+    }
 
-    fields.forEach(function(field){
-      field.classList.remove("search-error");
+    function checkField(field) {
+        if (!field) return true;
 
-      if(field.required && !String(field.value || "").trim()){
-        field.classList.add("search-error");
-        valid = false;
-      }
+        const value = valueOf(field);
+
+        if (!value) {
+            field.classList.add("search-required-error");
+            return false;
+        }
+
+        field.classList.remove("search-required-error");
+        return true;
+    }
+
+    // إزالة الأحمر بمجرد أن يملأ العميل الخانة
+    fields.forEach(function (field) {
+        if (!field) return;
+
+        field.addEventListener("input", function () {
+            if (valueOf(field)) clearError(field);
+        });
+
+        field.addEventListener("change", function () {
+            if (valueOf(field)) clearError(field);
+        });
     });
 
-    /*
-      لو فيه خانة ناقصة:
-      نوقف هنا نهائيًا.
-      لا واتساب.
-      لا صفحة خارجية.
-      لا انتقال.
-    */
-    if(!valid){
-      var firstError = searchBox.querySelector(".search-error");
+    btn.addEventListener("click", function (event) {
 
-      if(firstError){
-        firstError.scrollIntoView({
-          behavior:"smooth",
-          block:"center"
+        event.preventDefault();
+        event.stopPropagation();
+        event.stopImmediatePropagation();
+
+        let valid = true;
+        let firstEmpty = null;
+
+        fields.forEach(function (field) {
+
+            if (!field) return;
+
+            const ok = checkField(field);
+
+            if (!ok) {
+                valid = false;
+
+                if (!firstEmpty) {
+                    firstEmpty = field;
+                }
+            }
         });
-        firstError.focus();
-      }
 
-      return false;
-    }
+        // أي خانة ناقصة = لا انتقال ولا واتساب
+        if (!valid) {
 
-    /*
-      كل الخانات المطلوبة مكتملة:
-      نذهب إلى "جاهز تبدأ رحلتك؟"
-    */
-    var contact = document.getElementById("contact") ||
-              document.querySelector(".contact-premium");
+            if (firstEmpty) {
+                firstEmpty.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
 
-    if(contact){
-      searchBox.classList.add("search-completed");
+                firstEmpty.focus();
+            }
 
-      setTimeout(function(){
-        contact.scrollIntoView({
-          behavior:"smooth",
-          block:"start"
-        });
-      }, 80);
-    }
+            return false;
+        }
 
-    return false;
-  }, true);
+        // -------------------------------------------------
+        // كل الخانات مكتملة:
+        // نخفي شريط البحث ثم ننزل لقسم التواصل فقط.
+        // لا يوجد أي window.open ولا waLink هنا.
+        // -------------------------------------------------
+
+        searchBox.classList.add("search-success-hidden");
+
+        const contact =
+            document.getElementById("contact") ||
+            document.querySelector(".contact-premium");
+
+        if (contact) {
+            setTimeout(function () {
+                contact.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+            }, 100);
+        }
+
+        return false;
+
+    }, true);
+
 })();
 </script>
 
