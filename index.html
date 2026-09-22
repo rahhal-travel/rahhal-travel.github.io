@@ -380,11 +380,11 @@
 
             <div class="contact-buttons">
 
-                <a href="https://wa.me/" class="contact-btn whatsapp-btn">
+                <a href="https://wa.me/201019483858" class="contact-btn whatsapp-btn">
                     💬 تواصل عبر واتساب
                 </a>
 
-                <a href="tel:" class="contact-btn call-btn">
+                <a href="tel:+201117888955" class="contact-btn call-btn">
                     📞 اتصل بنا
                 </a>
 
@@ -481,9 +481,10 @@ document.querySelectorAll(".nav a").forEach(link => {
 </div>
 <script>
 /* رقم واتساب بالصيغة الدولية بدون + وبدون مسافات، مثال: 201234567890 */
-const RAHHAL_PHONE = "";
+const RAHHAL_WHATSAPP = "201019483858";
+const RAHHAL_PHONE = "201117888955";
 function waLink(msg){
-  return RAHHAL_PHONE ? "https://wa.me/" + RAHHAL_PHONE + "?text=" + encodeURIComponent(msg) : "#contact";
+  return RAHHAL_WHATSAPP ? "https://wa.me/" + RAHHAL_WHATSAPP + "?text=" + encodeURIComponent(msg) : "#contact";
 }
 const DEST_INFO = {
   "تركيا": {desc:"بين تاريخ إسطنبول وسواحل أنطاليا وطبيعة طرابزون الخضراء، وجهة تناسب العائلات والأصدقاء.", best:"الربيع والخريف (أبريل–يونيو وسبتمبر–أكتوبر)", type:"سياحة ثقافية وطبيعة وتسوق"},
@@ -512,7 +513,7 @@ const DEST_INFO = {
     $("destType").textContent = info.type;
     const b = $("destBook");
     b.href = waLink("مرحبًا رحّال، أرغب في الاستفسار عن رحلة إلى " + name);
-    if(RAHHAL_PHONE){ b.target = "_blank"; b.rel = "noopener"; } else { b.removeAttribute("target"); }
+    if(RAHHAL_WHATSAPP){ b.target = "_blank"; b.rel = "noopener"; } else { b.removeAttribute("target"); }
     lastFocus = document.activeElement;
     modal.hidden = false;
     document.body.classList.add("modal-open");
@@ -559,7 +560,7 @@ const DEST_INFO = {
     book.className = "trip-book";
     book.textContent = "احجز الآن";
     book.href = waLink("مرحبًا رحّال، أرغب في الاستفسار عن " + h3.textContent.trim());
-    if(RAHHAL_PHONE){ book.target = "_blank"; book.rel = "noopener"; }
+    if(RAHHAL_WHATSAPP){ book.target = "_blank"; book.rel = "noopener"; }
     oldBtn.parentNode.insertBefore(price, oldBtn);
     oldBtn.parentNode.insertBefore(actions, oldBtn);
     actions.appendChild(book);
