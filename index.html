@@ -551,9 +551,6 @@ const DEST_INFO = {
     const oldBtn = card.querySelector(".trip-btn");
     const h3 = card.querySelector("h3");
     if(!content || !oldBtn || !h3) return;
-    const price = document.createElement("div");
-    price.className = "trip-price";
-    price.innerHTML = "<span>السعر</span><strong>استفسر عن السعر</strong>";
     const actions = document.createElement("div");
     actions.className = "trip-actions";
     const book = document.createElement("a");
@@ -561,7 +558,6 @@ const DEST_INFO = {
     book.textContent = "احجز الآن";
     book.href = waLink("مرحبًا رحّال، أرغب في الاستفسار عن " + h3.textContent.trim());
     if(RAHHAL_WHATSAPP){ book.target = "_blank"; book.rel = "noopener"; }
-    oldBtn.parentNode.insertBefore(price, oldBtn);
     oldBtn.parentNode.insertBefore(actions, oldBtn);
     actions.appendChild(book);
     actions.appendChild(oldBtn);
