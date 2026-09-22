@@ -128,7 +128,7 @@
                     <span>✈️ برامج متنوعة</span>
                     <span>🌍 وجهات عالمية</span>
                 </div>
-                <a class="trip-btn" href="#destinations">اكتشف الوجهات ←</a>
+                <a class="trip-btn" href="#trip-details" onclick="showTrip('world');return false">شوف التفاصيل ←</a>
             </div>
         </article>
 
@@ -145,7 +145,7 @@
                     <span>🕋 مكة والمدينة</span>
                     <span>📋 برامج متنوعة</span>
                 </div>
-                <a class="trip-btn" href="#umrah">اعرف التفاصيل ←</a>
+                <a class="trip-btn" href="#trip-details" onclick="showTrip('umrah');return false">شوف التفاصيل ←</a>
             </div>
         </article>
 
@@ -162,7 +162,7 @@
                     <span>👨‍👩‍👧‍👦 للعائلات</span>
                     <span>🏖️ وجهات متنوعة</span>
                 </div>
-                <a class="trip-btn" href="#contact">اطلب التفاصيل ←</a>
+                <a class="trip-btn" href="#trip-details" onclick="showTrip('leisure');return false">شوف التفاصيل ←</a>
             </div>
         </article>
 
@@ -753,5 +753,8 @@ const DEST_INFO = {
 })();
 </script>
 
-</body>
+<div id="trip-details" class="dest-modal" hidden><div class="dest-modal__backdrop" onclick="closeTrip()"></div><div class="dest-modal__box"><button class="dest-modal__close" onclick="closeTrip()">×</button><span>رحّال للسفر والرحلات</span><h3 id="trip-title"></h3><p id="trip-desc"></p><div class="trip-meta"><span>💰 السعر: <b>استفسر عن السعر</b></span><span>📋 التفاصيل: حسب البرنامج</span></div><h4>ماذا تشمل الرحلة؟</h4><ul id="trip-list"></ul><a id="trip-wa" class="trip-book" target="_blank" rel="noopener">استفسر عبر واتساب</a></div></div><script>
+function showTrip(t){var d={world:["رحلات حول العالم","برامج سياحية متنوعة إلى وجهات عالمية.","اختيار الوجهة والمدة والخدمات المناسبة","خيارات للأفراد والعائلات"],umrah:["رحلات العمرة","برامج عمرة إلى مكة والمدينة حسب الموسم والبرنامج.","خيارات مختلفة حسب الموسم","خدمات وفنادق حسب الباقة"],leisure:["رحلات ترفيهية","رحلات للعائلات والأصدقاء والأفراد إلى وجهات متنوعة.","برامج ترفيهية متنوعة","اختيار المدة والخدمات"]}[t];document.getElementById("trip-title").textContent=d[0];document.getElementById("trip-desc").textContent=d[1];document.getElementById("trip-list").innerHTML="<li>✓ "+d[2]+"</li><li>✓ "+d[3]+"</li><li>✓ تفاصيل السعر والخدمات عند الاستفسار</li>";document.getElementById("trip-wa").href=waLink("مرحبًا رحّال، أرغب في الاستفسار عن "+d[0]);document.getElementById("trip-details").hidden=false;document.body.classList.add("modal-open")}
+function closeTrip(){document.getElementById("trip-details").hidden=true;document.body.classList.remove("modal-open")}
+</script></body>
 </html>
