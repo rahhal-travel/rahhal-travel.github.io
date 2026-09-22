@@ -2457,3 +2457,9 @@ footer .rahhal-word,
     width:100%;
   }
 }
+
+
+/* SEARCH COMPLETED HIDE */
+.trip-search.search-completed{
+  display:none !important;
+}

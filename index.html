@@ -963,13 +963,18 @@ function closeTrip(){document.getElementById("trip-details").hidden=true;documen
       كل الخانات المطلوبة مكتملة:
       نذهب إلى "جاهز تبدأ رحلتك؟"
     */
-    var ready = document.getElementById("ready-trip");
+    var contact = document.getElementById("contact") ||
+              document.querySelector(".contact-premium");
 
-    if(ready){
-      ready.scrollIntoView({
-        behavior:"smooth",
-        block:"start"
-      });
+    if(contact){
+      searchBox.classList.add("search-completed");
+
+      setTimeout(function(){
+        contact.scrollIntoView({
+          behavior:"smooth",
+          block:"start"
+        });
+      }, 80);
     }
 
     return false;
