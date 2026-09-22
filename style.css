@@ -2318,3 +2318,59 @@ html{scroll-padding-top:80px}
     font-size:17px;
   }
 }
+
+
+/* ===== RAHHAL BRAND IDENTITY FINAL ===== */
+.rahhal-logo{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  direction:rtl;
+  text-decoration:none;
+  line-height:1;
+}
+
+.rahhal-word{
+  font-size:28px;
+  font-weight:950;
+  letter-spacing:-1.2px;
+  color:#17344d;
+  text-shadow:0 1px 0 rgba(255,255,255,.5);
+}
+
+.rahhal-icon{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:38px;
+  height:38px;
+  border-radius:12px 12px 12px 4px;
+  background:#17344d;
+  color:#d8b23c;
+  font-size:21px;
+  font-weight:900;
+  transform:rotate(-8deg);
+  box-shadow:0 6px 16px rgba(23,52,77,.16);
+}
+
+.rahhal-logo:hover .rahhal-icon{
+  transform:rotate(-8deg) translateY(-2px);
+}
+
+footer .rahhal-word,
+.footer-logo .rahhal-word{
+  color:inherit;
+}
+
+@media(max-width:600px){
+  .rahhal-word{
+    font-size:24px;
+  }
+
+  .rahhal-icon{
+    width:33px;
+    height:33px;
+    font-size:18px;
+    border-radius:10px 10px 10px 3px;
+  }
+}
