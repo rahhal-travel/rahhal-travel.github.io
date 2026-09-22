@@ -94,11 +94,11 @@
         <p class="trip-search__title">🔍 ابحث عن رحلتك</p>
         <div class="trip-search__grid">
             <label>الوجهة
-                <input type="text" id="tsDest" required required list="tsDestList" placeholder="اكتب اسم الدولة" autocomplete="off">
+                <input type="text" id="tsDest" required required list="tsDestList" placeholder="اكتب اسم الدولة" autocomplete="off" required>
                 <datalist id="tsDestList"><option value="تركيا"><option value="الإمارات"><option value="السعودية"><option value="تايلاند"><option value="اليونان"><option value="ماليزيا"><option value="مصر"><option value="قطر"><option value="الكويت"><option value="البحرين"><option value="سلطنة عمان"><option value="الأردن"><option value="المغرب"><option value="تونس"><option value="لبنان"><option value="أذربيجان"><option value="جورجيا"><option value="ألبانيا"><option value="البوسنة والهرسك"><option value="إندونيسيا"><option value="المالديف"><option value="سريلانكا"><option value="سنغافورة"><option value="اليابان"><option value="كوريا الجنوبية"><option value="الصين"><option value="الهند"><option value="فيتنام"><option value="إيطاليا"><option value="فرنسا"><option value="إسبانيا"><option value="ألمانيا"><option value="سويسرا"><option value="النمسا"><option value="هولندا"><option value="بريطانيا"><option value="البرتغال"><option value="التشيك"><option value="المجر"><option value="روسيا"><option value="أمريكا"><option value="كندا"><option value="أستراليا"><option value="جنوب أفريقيا"><option value="كينيا"><option value="تنزانيا"><option value="موريشيوس"><option value="سيشل"><option value="البرازيل"></datalist>
             </label>
             <label>نوع الرحلة
-                <select id="tsType" required required>
+                <select id="tsType" required required required>
                     <option value="">أي نوع</option>
                     <option>سياحة عالمية</option>
                     <option>عمرة وزيارات</option>
@@ -106,10 +106,10 @@
                 </select>
             </label>
             <label>تاريخ السفر
-                <input type="date" id="tsDate" required>
+                <input type="date" id="tsDate" required required>
             </label>
             <label>عدد الأشخاص
-                <input type="number" id="tsPeople" required min="1" max="99" value="1" inputmode="numeric">
+                <input type="number" id="tsPeople" required min="1" max="99" inputmode="numeric" required>
             </label>
         </div>
         <button class="trip-search__btn" id="tsBtn" type="button">ابحث</button>
@@ -500,328 +500,7 @@
 </main>
 
 
-<script>
-const menuBtn = document.querySelector(".menu-btn");
-const nav = document.querySelector(".nav");
 
-menuBtn.addEventListener("click", () => {
-    nav.classList.toggle("active");
-});
-
-document.querySelectorAll(".nav a").forEach(link => {
-    link.addEventListener("click", () => {
-        nav.classList.remove("active");
-    });
-});
-</script>
-
-
-<footer class="site-footer">
-
-    <div class="footer-main">
-
-        <div class="footer-brand">
-            <a href="#home" class="footer-logo"><span class="brand-mark">✈</span> رحّال</a>
-            <p>
-                رحّال معاك لاكتشاف وجهات جديدة،
-                وتنظيم رحلات أسهل وأجمل.
-            </p>
-        </div>
-
-        <div class="footer-links">
-            <h3>روابط سريعة</h3>
-            <a href="#home">الرئيسية</a>
-            <a href="#trips">الرحلات</a>
-            <a href="#umrah">العمرة</a>
-            <a href="#features">لماذا رحّال؟</a>
-            <a href="#destinations">الوجهات</a>
-            <a href="#contact">تواصل معنا</a>
-        </div>
-
-        <div class="footer-links">
-            <h3>خدماتنا</h3>
-            <span>✈️ رحلات سياحية</span>
-            <span>🕋 رحلات العمرة</span>
-            <span>🌍 وجهات عالمية</span>
-            <span>💬 استفسارات وحجوزات</span>
-        </div>
-
-    </div>
-
-    <div class="footer-legal"><a href="privacy.html">سياسة الخصوصية</a><a href="terms.html">الشروط والأحكام</a></div>
-
-<div class="footer-bottom">
-        <span>© 2026 رحّال — جميع الحقوق محفوظة</span>
-        <span>صُمم بشغف للسفر ✈️</span>
-    </div>
-
-<div class="rahhal-facebook"><a href="https://www.facebook.com/share/1FTbsuUTFa/" target="_blank" rel="noopener" aria-label="رحّال على فيسبوك">فيسبوك</a></div>
-</footer>
-
-
-<div class="dest-modal" id="destModal" hidden>
-  <div class="dest-modal__backdrop" data-close></div>
-  <div class="dest-modal__box" role="dialog" aria-modal="true" aria-labelledby="destTitle">
-    <button class="dest-modal__close" data-close aria-label="إغلاق">×</button>
-    <h3 id="destTitle"></h3>
-    <p class="dest-modal__cities" id="destCities"></p>
-    <p id="destDesc"></p>
-    <ul class="dest-modal__facts">
-      <li><span>أفضل وقت للزيارة</span><strong id="destBest"></strong></li>
-      <li><span>نوع الرحلة</span><strong id="destType"></strong></li>
-    </ul>
-    <a class="dest-modal__book" id="destBook" href="#contact">احجز الآن</a>
-  </div>
-</div>
-<script>
-/* رقم واتساب بالصيغة الدولية بدون + وبدون مسافات، مثال: 201234567890 */
-const RAHHAL_WHATSAPP = "201019483858";
-const RAHHAL_PHONE = "201117888955";
-function waLink(msg){
-  return RAHHAL_WHATSAPP ? "https://wa.me/" + RAHHAL_WHATSAPP + "?text=" + encodeURIComponent(msg) : "#contact";
-}
-const DEST_INFO = {
-  "تركيا": {desc:"بين تاريخ إسطنبول وسواحل أنطاليا وطبيعة طرابزون الخضراء، وجهة تناسب العائلات والأصدقاء.", best:"الربيع والخريف (أبريل–يونيو وسبتمبر–أكتوبر)", type:"سياحة ثقافية وطبيعة وتسوق"},
-  "الإمارات": {desc:"دبي وأبوظبي والشارقة: ناطحات سحاب وشواطئ ومراكز تسوق وتجارب ثقافية في رحلة واحدة.", best:"من نوفمبر إلى مارس", type:"ترفيهية وتسوق وعائلية"},
-  "السعودية": {desc:"مكة والمدينة وجدة: رحلات عمرة وزيارات ببرامج مريحة تناسب الأفراد والعائلات.", best:"الشتاء عادةً أخف طقسًا، ومواعيد العمرة تتغير حسب الموسم", type:"عمرة وزيارات"},
-  "تايلاند": {desc:"بانكوك وبوكيت وكرابي: أسواق نابضة وشواطئ وجزر وأكل شوارع مميز.", best:"من نوفمبر إلى فبراير", type:"ترفيهية وشواطئ"},
-  "اليونان": {desc:"أثينا وسانتوريني وميكونوس: آثار عريقة وجزر بيضاء وغروب لا يُنسى.", best:"من مايو إلى أكتوبر", type:"ترفيهية وجزر وثقافة"},
-  "ماليزيا": {desc:"كوالالمبور ولنكاوي وبينانج: مدن حديثة وجزر وطبيعة استوائية.", best:"يختلف حسب الجزيرة، وغالبًا من ديسمبر إلى مارس", type:"ترفيهية وطبيعة وتسوق"}
-};
-(function(){
-  const modal = document.getElementById("destModal");
-  if(!modal) return;
-  const $ = function(id){ return document.getElementById(id); };
-  let lastFocus = null;
-  function openModal(card){
-    const h3 = card.querySelector("h3");
-    if(!h3) return;
-    const name = h3.textContent.replace(/[^\u0600-\u06FF\s]/g,"").trim();
-    const info = DEST_INFO[name];
-    if(!info) return;
-    const p = card.querySelector(".destination-info p");
-    $("destTitle").textContent = name;
-    $("destCities").textContent = p ? p.textContent : "";
-    $("destDesc").textContent = info.desc;
-    $("destBest").textContent = info.best;
-    $("destType").textContent = info.type;
-    const b = $("destBook");
-    b.href = waLink("مرحبًا رحّال، أرغب في الاستفسار عن رحلة إلى " + name);
-    if(RAHHAL_WHATSAPP){ b.target = "_blank"; b.rel = "noopener"; } else { b.removeAttribute("target"); }
-    lastFocus = document.activeElement;
-    modal.hidden = false;
-    document.body.classList.add("modal-open");
-    modal.querySelector(".dest-modal__close").focus();
-  }
-  function closeModal(){
-    modal.hidden = true;
-    document.body.classList.remove("modal-open");
-    if(lastFocus) lastFocus.focus();
-  }
-  document.querySelectorAll(".destination-card").forEach(function(card){
-    card.setAttribute("tabindex","0");
-    card.setAttribute("role","button");
-    card.addEventListener("click", function(e){ e.preventDefault(); openModal(card); });
-    card.addEventListener("keydown", function(e){
-      if(e.key === "Enter" || e.key === " "){ e.preventDefault(); openModal(card); }
-    });
-  });
-  modal.addEventListener("click", function(e){
-    if(e.target.hasAttribute("data-close")) closeModal();
-  });
-  $("destBook").addEventListener("click", function(){ if(!RAHHAL_PHONE) closeModal(); });
-  document.addEventListener("keydown", function(e){
-    if(e.key === "Escape" && !modal.hidden) closeModal();
-  });
-})();
-</script>
-
-
-<script>
-/* TRIP_ENHANCE */
-(function(){
-  document.querySelectorAll(".trip-card").forEach(function(card){
-    const content = card.querySelector(".trip-content");
-    const oldBtn = card.querySelector(".trip-btn");
-    const h3 = card.querySelector("h3");
-    if(!content || !oldBtn || !h3) return;
-    const actions = document.createElement("div");
-    actions.className = "trip-actions";
-    const book = document.createElement("a");
-    book.className = "trip-book";
-    book.textContent = "احجز الآن";
-    book.href = waLink("مرحبًا رحّال، أرغب في الاستفسار عن " + h3.textContent.trim());
-    if(RAHHAL_WHATSAPP){ book.target = "_blank"; book.rel = "noopener"; }
-    oldBtn.parentNode.insertBefore(actions, oldBtn);
-    actions.appendChild(book);
-    actions.appendChild(oldBtn);
-  });
-})();
-</script>
-
-
-<script>
-/* CONTACT_WIRE */
-(function(){
-  const wa = document.querySelector(".contact-buttons .whatsapp-btn");
-  const call = document.querySelector(".contact-buttons .call-btn");
-  if(RAHHAL_PHONE){
-    if(wa){ wa.href = waLink("مرحبًا رحّال، أرغب في الاستفسار عن رحلة"); wa.target = "_blank"; wa.rel = "noopener"; }
-    if(call){ call.href = "tel:+" + RAHHAL_PHONE; }
-  } else {
-    [wa, call].forEach(function(b){
-      if(b){ b.classList.add("is-disabled"); b.removeAttribute("href"); b.setAttribute("aria-disabled","true"); }
-    });
-  }
-})();
-</script>
-
-
-<script>
-/* HERO_CTA */
-(function(){
-  const box = document.querySelector(".hero-buttons");
-  if(!box) return;
-  const row = document.createElement("div");
-  row.className = "hero-extra";
-  const book = document.createElement("a");
-  book.className = "hero-book";
-  book.textContent = "احجز رحلتك";
-  book.href = waLink("مرحبًا رحّال، أرغب في حجز رحلة");
-  const wa = document.createElement("a");
-  wa.className = "hero-wa";
-  wa.textContent = "💬 واتساب";
-  if(RAHHAL_PHONE){
-    wa.href = waLink("السلام عليكم، أريد الاستفسار عن رحلة");
-    [book, wa].forEach(function(a){ a.target = "_blank"; a.rel = "noopener"; });
-  } else {
-    wa.classList.add("is-disabled");
-    wa.setAttribute("aria-disabled","true");
-  }
-  row.appendChild(book);
-  row.appendChild(wa);
-  box.parentNode.insertBefore(row, box.nextSibling);
-})();
-</script>
-
-
-<script>
-/* MENU_OUTSIDE */
-(function(){
-  var btn = document.querySelector(".menu-btn");
-  var navEl = document.querySelector(".nav");
-  if(!btn || !navEl) return;
-  document.addEventListener("click", function(e){
-    if(navEl.classList.contains("active") && !navEl.contains(e.target) && !btn.contains(e.target)){
-      navEl.classList.remove("active");
-    }
-  });
-})();
-</script>
-
-
-<script>
-/* TRIP_SEARCH */
-(function(){
-
-  var destEl = document.getElementById("tsDest");
-  var typeEl = document.getElementById("tsType");
-  var d = document.getElementById("tsDate");
-  if(!btn || !destEl || !typeEl || !d) return;
-  var t = new Date();
-  d.min = t.getFullYear() + "-" + String(t.getMonth()+1).padStart(2,"0") + "-" + String(t.getDate()).padStart(2,"0");
-
-  var countries = [];
-  document.querySelectorAll("#tsDestList option").forEach(function(o){ countries.push(o.value); });
-  destEl.removeAttribute("list");
-
-  var box = document.createElement("div");
-  box.className = "ts-suggest";
-  box.hidden = true;
-  destEl.parentNode.appendChild(box);
-
-  function norm(x){
-    return x.replace(/[أإآ]/g, "ا").trim();
-  }
-  function showSuggest(){
-    var q = norm(destEl.value);
-    box.innerHTML = "";
-    if(!q){ box.hidden = true; return; }
-    var starts = countries.filter(function(c){ return norm(c).indexOf(q) === 0; });
-    var has = countries.filter(function(c){ return norm(c).indexOf(q) > 0; });
-    var list = starts.concat(has).slice(0, 8);
-    if(!list.length){ box.hidden = true; return; }
-    list.forEach(function(c){
-      var b = document.createElement("button");
-      b.type = "button";
-      b.textContent = c;
-      b.addEventListener("mousedown", function(e){ e.preventDefault(); });
-      b.addEventListener("click", function(){
-        destEl.value = c;
-        box.hidden = true;
-        fillTypes();
-      });
-      box.appendChild(b);
-    });
-    box.hidden = false;
-  }
-
-  var GROUPS = [
-    ["رحلات سياحية", ["سياحة عالمية","رحلات ترفيهية","شهر العسل","رحلات جماعية"]],
-    ["أغراض أخرى", ["سفر عمل","دراسة وتعليم","سياحة علاجية"]]
-  ];
-  function fillTypes(){
-    var keep = typeEl.value;
-    typeEl.innerHTML = "";
-    var first = document.createElement("option");
-    first.value = "";
-    first.textContent = "أي نوع";
-    typeEl.appendChild(first);
-    var groups = GROUPS.slice();
-    if(norm(destEl.value) === "السعودية"){
-      groups = [["رحلات دينية", ["عمرة وحج"]]].concat(groups);
-    }
-    groups.forEach(function(g){
-      var og = document.createElement("optgroup");
-      og.label = g[0];
-      g[1].forEach(function(x){
-        var o = document.createElement("option");
-        o.textContent = x;
-        og.appendChild(o);
-      });
-      typeEl.appendChild(og);
-    });
-    typeEl.value = keep;
-  }
-  fillTypes();
-
-  destEl.addEventListener("input", function(){ showSuggest(); fillTypes(); });
-  destEl.addEventListener("focus", showSuggest);
-  document.addEventListener("click", function(e){
-    if(!box.contains(e.target) && e.target !== destEl){ box.hidden = true; }
-  });
-
-  btn.addEventListener("click", function(){
-    var dest = destEl.value.trim();
-    var type = typeEl.value;
-    var people = document.getElementById("tsPeople").value || "1";
-    box.hidden = true;
-    if(RAHHAL_PHONE){
-      var msg = "السلام عليكم، أريد الاستفسار عن رحلة";
-      if(dest) msg += " إلى " + dest;
-      if(type) msg += "، نوع الرحلة: " + type;
-      if(d.value) msg += "، تاريخ السفر: " + d.value;
-      msg += "، عدد الأشخاص: " + people;
-      window.open(waLink(msg), "_blank", "noopener");
-      return;
-    }
-    setTimeout(function(){
-      var target = document.querySelector(".contact-buttons") || document.getElementById("contact");
-      if(target) target.scrollIntoView({behavior:"smooth", block:"center"});
-    }, 80);
-  });
-})();
-</script>
 
 
 
@@ -917,123 +596,85 @@ function closeTrip(){document.getElementById("trip-details").hidden=true;documen
 
 
 
+
+
+
 <script>
-/* RAHHAL_SEARCH_CLEAN_FINAL */
 (function () {
-
     const btn = document.getElementById("tsBtn");
-    const searchBox = document.querySelector(".trip-search");
+    const search = document.querySelector(".trip-search");
 
-    if (!btn || !searchBox) return;
+    if (!btn || !search) return;
 
-    const fields = [
-        document.getElementById("tsDest"),
-        document.getElementById("tsType"),
-        document.getElementById("tsDate"),
-        document.getElementById("tsPeople")
-    ];
+    const destination = document.getElementById("tsDest");
+    const type = document.getElementById("tsType");
+    const date = document.getElementById("tsDate");
+    const people = document.getElementById("tsPeople");
 
-    function valueOf(field) {
-        return field ? String(field.value || "").trim() : "";
-    }
+    const fields = [destination, type, date, people];
 
-    function clearError(field) {
-        if (field) {
-            field.classList.remove("search-required-error");
-        }
-    }
-
-    function checkField(field) {
-        if (!field) return true;
-
-        const value = valueOf(field);
-
-        if (!value) {
-            field.classList.add("search-required-error");
-            return false;
-        }
-
-        field.classList.remove("search-required-error");
-        return true;
-    }
-
-    // إزالة الأحمر بمجرد أن يملأ العميل الخانة
-    fields.forEach(function (field) {
+    fields.forEach(function(field) {
         if (!field) return;
 
-        field.addEventListener("input", function () {
-            if (valueOf(field)) clearError(field);
+        field.addEventListener("input", function() {
+            if (field.value.trim()) {
+                field.classList.remove("search-error");
+            }
         });
 
-        field.addEventListener("change", function () {
-            if (valueOf(field)) clearError(field);
+        field.addEventListener("change", function() {
+            if (field.value.trim()) {
+                field.classList.remove("search-error");
+            }
         });
     });
 
-    btn.addEventListener("click", function (event) {
-
-        event.preventDefault();
-        event.stopPropagation();
-        event.stopImmediatePropagation();
+    btn.onclick = function(e) {
+        e.preventDefault();
+        e.stopPropagation();
 
         let valid = true;
-        let firstEmpty = null;
+        let firstError = null;
 
-        fields.forEach(function (field) {
-
+        fields.forEach(function(field) {
             if (!field) return;
 
-            const ok = checkField(field);
+            field.classList.remove("search-error");
 
-            if (!ok) {
+            if (!field.value.trim()) {
+                field.classList.add("search-error");
                 valid = false;
 
-                if (!firstEmpty) {
-                    firstEmpty = field;
+                if (!firstError) {
+                    firstError = field;
                 }
             }
         });
 
-        // أي خانة ناقصة = لا انتقال ولا واتساب
         if (!valid) {
-
-            if (firstEmpty) {
-                firstEmpty.scrollIntoView({
-                    behavior: "smooth",
-                    block: "center"
-                });
-
-                firstEmpty.focus();
+            if (firstError) {
+                firstError.focus();
             }
-
             return false;
         }
 
-        // -------------------------------------------------
         // كل الخانات مكتملة:
-        // نخفي شريط البحث ثم ننزل لقسم التواصل فقط.
-        // لا يوجد أي window.open ولا waLink هنا.
-        // -------------------------------------------------
+        // لا واتساب
+        // لا صفحة خارجية
+        // فقط الانتقال لقسم التواصل
+        search.style.display = "none";
 
-        searchBox.classList.add("search-success-hidden");
-
-        const contact =
-            document.getElementById("contact") ||
-            document.querySelector(".contact-premium");
+        const contact = document.getElementById("contact");
 
         if (contact) {
-            setTimeout(function () {
-                contact.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start"
-                });
-            }, 100);
+            contact.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
         }
 
         return false;
-
-    }, true);
-
+    };
 })();
 </script>
 

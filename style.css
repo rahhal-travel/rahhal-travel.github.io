@@ -2475,3 +2475,12 @@ footer .rahhal-word,
 .trip-search.search-success-hidden {
     display: none !important;
 }
+
+
+/* SEARCH_ERROR_FINAL */
+.trip-search input.search-error,
+.trip-search select.search-error {
+    border: 3px solid #e53935 !important;
+    box-shadow: 0 0 0 3px rgba(229,57,53,.15) !important;
+    background: #fff5f5 !important;
+}
