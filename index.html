@@ -112,7 +112,7 @@
                 <input type="number" id="tsPeople" min="1" max="99" value="1" inputmode="numeric">
             </label>
         </div>
-        <button type="button" class="trip-search__btn" id="tsBtn">ابحث</button>
+        <button class="trip-search__btn" id="tsBtn" type="button">ابحث</button>
     </div>
 </section>
 
@@ -700,7 +700,7 @@ const DEST_INFO = {
 <script>
 /* TRIP_SEARCH */
 (function(){
-  var btn = document.getElementById("tsBtn");
+
   var destEl = document.getElementById("tsDest");
   var typeEl = document.getElementById("tsType");
   var d = document.getElementById("tsDate");
@@ -814,7 +814,7 @@ const DEST_INFO = {
   document.addEventListener("click", function(e){
     if(panel.classList.contains("is-open") && !panel.contains(e.target) && !pill.contains(e.target)) closeP();
   });
-  var b = document.getElementById("tsBtn");
+
   if(b) b.addEventListener("click", closeP);
   document.addEventListener("keydown", function(e){ if(e.key === "Escape") closeP(); });
 })();
@@ -902,7 +902,7 @@ function closeTrip(){document.getElementById("trip-details").hidden=true;documen
 <script>
 /* SEARCH_FINAL */
 (function(){
-  const btn = document.getElementById("tsBtn");
+
   if(!btn) return;
 
   btn.addEventListener("click", function(e){
@@ -950,6 +950,88 @@ function closeTrip(){document.getElementById("trip-details").hidden=true;documen
       );
     }
   });
+})();
+</script>
+
+
+<script>
+/* RAHHAL_SEARCH_FINAL */
+(function(){
+  var btn = document.getElementById("tsBtn");
+  if(!btn) return;
+
+  btn.type = "button";
+
+  btn.addEventListener("click", function(e){
+    e.preventDefault();
+    e.stopPropagation();
+
+    /*
+      البحث لا يفعل أي شيء إطلاقًا إذا لم يتم اختيار أي قيمة.
+      لا واتساب، لا صفحة خارجية، لا انتقال.
+    */
+    var selects = document.querySelectorAll(".trip-search select");
+    var chosen = [];
+
+    selects.forEach(function(select){
+      var value = (select.value || "").trim();
+
+      if(
+        value &&
+        value !== "all" &&
+        value !== "اختر" &&
+        value !== "اختر الوجهة" &&
+        value !== "اختر النوع" &&
+        value !== "اختر المدة"
+      ){
+        chosen.push(value);
+      }
+    });
+
+    if(chosen.length === 0){
+      return false;
+    }
+
+    /*
+      عند وجود اختيار:
+      نعرض الرحلات الموجودة بالفعل داخل الموقع.
+      لا نرسل المستخدم لواتساب.
+    */
+    var cards = document.querySelectorAll(".trip-card");
+    var found = false;
+
+    cards.forEach(function(card){
+      var text = (card.innerText || "").toLowerCase();
+      var match = chosen.some(function(value){
+        return text.indexOf(value.toLowerCase()) !== -1;
+      });
+
+      card.style.display = match ? "" : "none";
+
+      if(match) found = true;
+    });
+
+    var trips = document.getElementById("trips");
+
+    if(trips){
+      trips.scrollIntoView({
+        behavior:"smooth",
+        block:"start"
+      });
+    }
+
+    /*
+      لو البحث لم يجد تطابقًا، نعرض كل الرحلات بدل تحويل العميل
+      إلى واتساب أو صفحة خارجية.
+    */
+    if(!found){
+      cards.forEach(function(card){
+        card.style.display = "";
+      });
+    }
+
+    return false;
+  }, true);
 })();
 </script>
 
