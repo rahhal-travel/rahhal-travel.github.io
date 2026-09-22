@@ -2276,3 +2276,45 @@ html{scroll-padding-top:80px}
     height:30px;
   }
 }
+
+
+/* ===== RAHHAL BRAND FINAL ===== */
+.logo{
+  display:inline-flex !important;
+  align-items:center;
+  gap:9px;
+  text-decoration:none;
+  font-weight:900;
+}
+.brand-mark{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:34px;
+  height:34px;
+  border-radius:11px;
+  background:#17344d;
+  color:#d8b23c;
+  font-size:19px;
+  line-height:1;
+  transform:rotate(-8deg);
+}
+.brand-name{
+  font-weight:950;
+  letter-spacing:-.7px;
+}
+.rahhal-facebook{
+  margin-top:14px;
+}
+.rahhal-facebook a{
+  display:inline-flex;
+  text-decoration:none;
+  font-weight:800;
+}
+@media(max-width:600px){
+  .brand-mark{
+    width:30px;
+    height:30px;
+    font-size:17px;
+  }
+}
