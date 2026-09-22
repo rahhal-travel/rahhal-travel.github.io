@@ -227,6 +227,65 @@
 </section>
 
 
+
+<section class="custom-trip" id="custom-trip">
+  <div class="custom-trip__inner">
+    <div class="section-heading">
+      <span>رحلتك على ذوقك</span>
+      <h2>صمّم رحلتك مع رحّال</h2>
+      <p>مش لاقي البرنامج المناسب؟ اختار احتياجاتك وإحنا نساعدك في تجهيز الرحلة المناسبة.</p>
+    </div>
+
+    <form class="custom-trip-form" id="customTripForm">
+      <div class="custom-field">
+        <label for="customDestination">الوجهة</label>
+        <select id="customDestination">
+          <option value="لم أحدد بعد">لم أحدد بعد</option>
+          <option>تركيا</option>
+          <option>الإمارات</option>
+          <option>السعودية</option>
+          <option>تايلاند</option>
+          <option>اليونان</option>
+          <option>ماليزيا</option>
+        </select>
+      </div>
+
+      <div class="custom-field">
+        <label for="customType">نوع الرحلة</label>
+        <select id="customType">
+          <option>سياحة</option>
+          <option>عائلية</option>
+          <option>ترفيهية</option>
+          <option>عمرة</option>
+          <option>شهر عسل</option>
+        </select>
+      </div>
+
+      <div class="custom-field">
+        <label for="customPeople">عدد المسافرين</label>
+        <select id="customPeople">
+          <option>1 - 2</option>
+          <option>3 - 5</option>
+          <option>6 - 10</option>
+          <option>أكثر من 10</option>
+        </select>
+      </div>
+
+      <div class="custom-field">
+        <label for="customDuration">المدة</label>
+        <select id="customDuration">
+          <option>أقل من أسبوع</option>
+          <option>7 - 10 أيام</option>
+          <option>10 - 14 يوم</option>
+          <option>أكثر من أسبوعين</option>
+        </select>
+      </div>
+
+      <button type="submit" class="custom-trip-submit">أرسل طلب الرحلة عبر واتساب</button>
+    </form>
+  </div>
+</section>
+
 <section class="destinations" id="destinations">
 
     <div class="section-heading">
@@ -243,7 +302,7 @@
             <div class="destination-info">
                 <h3>🇹🇷 تركيا</h3>
                 <p>إسطنبول • طرابزون • أنطاليا</p>
-                <a href="#contact">اكتشف الرحلة ←</a>
+                <a href="#trips">شوف الرحلات ←</a>
             </div>
         </article>
 
@@ -253,7 +312,7 @@
             <div class="destination-info">
                 <h3>🇦🇪 الإمارات</h3>
                 <p>دبي • أبوظبي • الشارقة</p>
-                <a href="#contact">اكتشف الرحلة ←</a>
+                <a href="#trips">شوف الرحلات ←</a>
             </div>
         </article>
 
@@ -263,7 +322,7 @@
             <div class="destination-info">
                 <h3>🇸🇦 السعودية</h3>
                 <p>مكة • المدينة • جدة</p>
-                <a href="#contact">اكتشف الرحلة ←</a>
+                <a href="#trips">شوف الرحلات ←</a>
             </div>
         </article>
 
@@ -273,7 +332,7 @@
             <div class="destination-info">
                 <h3>🇹🇭 تايلاند</h3>
                 <p>بانكوك • بوكيت • كرابي</p>
-                <a href="#contact">اكتشف الرحلة ←</a>
+                <a href="#trips">شوف الرحلات ←</a>
             </div>
         </article>
 
@@ -283,7 +342,7 @@
             <div class="destination-info">
                 <h3>🇬🇷 اليونان</h3>
                 <p>أثينا • سانتوريني • ميكونوس</p>
-                <a href="#contact">اكتشف الرحلة ←</a>
+                <a href="#trips">شوف الرحلات ←</a>
             </div>
         </article>
 
@@ -293,7 +352,7 @@
             <div class="destination-info">
                 <h3>🇲🇾 ماليزيا</h3>
                 <p>كوالالمبور • لنكاوي • بينانج</p>
-                <a href="#contact">اكتشف الرحلة ←</a>
+                <a href="#trips">شوف الرحلات ←</a>
             </div>
         </article>
 
@@ -484,7 +543,7 @@ document.querySelectorAll(".nav a").forEach(link => {
     <div class="footer-main">
 
         <div class="footer-brand">
-            <a href="#home" class="footer-logo">✈️ رحّال</a>
+            <a href="#home" class="footer-logo"><span class="brand-mark">✈</span> رحّال</a>
             <p>
                 رحّال معاك لاكتشاف وجهات جديدة،
                 وتنظيم رحلات أسهل وأجمل.
@@ -851,6 +910,34 @@ function closeTrip(){document.getElementById("trip-details").hidden=true;documen
 
       if(empty) empty.hidden = visible !== 0;
     });
+  });
+})();
+</script>
+
+
+<script>
+/* RAHHAL_FINAL_UPGRADE */
+(function(){
+  var form = document.getElementById("customTripForm");
+  if(!form) return;
+
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+
+    var destination = document.getElementById("customDestination").value;
+    var type = document.getElementById("customType").value;
+    var people = document.getElementById("customPeople").value;
+    var duration = document.getElementById("customDuration").value;
+
+    var msg =
+      "مرحبًا رحّال 👋%0A" +
+      "أرغب في تصميم رحلة مخصصة:%0A" +
+      "📍 الوجهة: " + destination + "%0A" +
+      "🧳 نوع الرحلة: " + type + "%0A" +
+      "👥 عدد المسافرين: " + people + "%0A" +
+      "📅 المدة: " + duration;
+
+    window.open("https://wa.me/" + RAHHAL_WHATSAPP + "?text=" + msg, "_blank");
   });
 })();
 </script>
