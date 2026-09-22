@@ -2095,3 +2095,63 @@ html{scroll-padding-top:80px}
 .ts-suggest[hidden]{display:none}
 .ts-suggest button{display:block;width:100%;text-align:right;padding:11px 14px;border:0;background:none;font:inherit;font-size:15px;color:#102a43;cursor:pointer}
 .ts-suggest button:hover,.ts-suggest button:active{background:#fdf6df}
+
+
+/* ===== RAHHAL TRIP CATALOG ===== */
+.trip-filters{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:10px;
+  margin:0 auto 28px;
+}
+.trip-filter{
+  border:1px solid rgba(20,52,78,.15);
+  background:#fff;
+  color:#17344d;
+  border-radius:999px;
+  padding:10px 18px;
+  font:inherit;
+  font-weight:700;
+  cursor:pointer;
+  transition:.2s ease;
+}
+.trip-filter:hover{
+  transform:translateY(-1px);
+}
+.trip-filter.active{
+  background:#d8b23c;
+  color:#fff;
+  border-color:#d8b23c;
+}
+.trip-card[hidden]{
+  display:none !important;
+}
+.trip-catalog-empty{
+  text-align:center;
+  padding:25px;
+  color:#687785;
+  font-weight:700;
+}
+.trip-actions{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  margin-top:18px;
+}
+.trip-actions .trip-book{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+}
+@media (max-width:600px){
+  .trip-filters{
+    gap:8px;
+    padding:0 8px;
+  }
+  .trip-filter{
+    padding:9px 13px;
+    font-size:14px;
+  }
+}

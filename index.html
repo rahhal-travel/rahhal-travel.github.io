@@ -103,69 +103,125 @@
     </div>
 </section>
 
+
 <section class="section trips-premium" id="trips">
 
     <div class="section-heading">
         <span>رحلات رحّال</span>
         <h2>اختار رحلتك القادمة</h2>
-        <p>
-            وجهات مميزة وبرامج سفر مصممة لتجعل رحلتك أسهل وأجمل.
-        </p>
+        <p>تصفح الوجهات والبرامج واختر الرحلة الأقرب لاحتياجاتك.</p>
     </div>
 
-    <div class="cards trips-premium-grid">
+    <div class="trip-filters" role="group" aria-label="فلترة الرحلات">
+        <button type="button" class="trip-filter active" data-filter="all">كل الرحلات</button>
+        <button type="button" class="trip-filter" data-filter="tourism">سياحة</button>
+        <button type="button" class="trip-filter" data-filter="umrah">عمرة</button>
+        <button type="button" class="trip-filter" data-filter="family">عائلية</button>
+        <button type="button" class="trip-filter" data-filter="leisure">ترفيهية</button>
+    </div>
 
-        <article class="trip-card premium-trip">
-            <div class="trip-image">🌍</div>
+    <div class="cards trips-premium-grid" id="tripCatalog">
+
+        <article class="trip-card premium-trip" data-category="tourism family" data-trip-id="turkey">
+            <div class="trip-image">🇹🇷</div>
             <div class="trip-content">
-                <span class="trip-tag">سياحة عالمية</span>
-                <h3>رحلات حول العالم</h3>
-                <p>
-                    اكتشف أشهر المدن والوجهات السياحية حول العالم
-                    واستمتع بتجربة سفر مختلفة.
-                </p>
+                <span class="trip-tag">سياحة • عائلية</span>
+                <h3>رحلات تركيا</h3>
+                <p>إسطنبول وطرابزون وأنطاليا وبرامج متنوعة حسب مدة الرحلة والميزانية.</p>
                 <div class="trip-meta">
                     <span>✈️ برامج متنوعة</span>
-                    <span>🌍 وجهات عالمية</span>
+                    <span>📍 تركيا</span>
                 </div>
-                <a class="trip-btn" href="#trip-details" onclick="showTrip('world');return false">شوف التفاصيل ←</a>
+                <div class="trip-actions">
+                    <a class="trip-book" href="#trip-details" onclick="showTrip('turkey');return false">شوف التفاصيل</a>
+                </div>
             </div>
         </article>
 
-        <article class="trip-card premium-trip">
+        <article class="trip-card premium-trip" data-category="tourism family leisure" data-trip-id="dubai">
+            <div class="trip-image">🇦🇪</div>
+            <div class="trip-content">
+                <span class="trip-tag">سياحة • ترفيهية</span>
+                <h3>رحلات الإمارات</h3>
+                <p>دبي وأبوظبي والشارقة مع خيارات تناسب العائلات والأصدقاء.</p>
+                <div class="trip-meta">
+                    <span>🏙️ مدن ومعالم</span>
+                    <span>📍 الإمارات</span>
+                </div>
+                <div class="trip-actions">
+                    <a class="trip-book" href="#trip-details" onclick="showTrip('dubai');return false">شوف التفاصيل</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="trip-card premium-trip" data-category="umrah family" data-trip-id="umrah">
             <div class="trip-image">🕋</div>
             <div class="trip-content">
-                <span class="trip-tag">عمرة وزيارات</span>
+                <span class="trip-tag">عمرة • عائلية</span>
                 <h3>رحلات العمرة</h3>
-                <p>
-                    خطط لرحلة العمرة الخاصة بك مع برامج مناسبة
-                    وخيارات متعددة تناسب احتياجاتك.
-                </p>
+                <p>برامج إلى مكة والمدينة مع خيارات متعددة حسب الموسم والباقة.</p>
                 <div class="trip-meta">
                     <span>🕋 مكة والمدينة</span>
                     <span>📋 برامج متنوعة</span>
                 </div>
-                <a class="trip-btn" href="#trip-details" onclick="showTrip('umrah');return false">شوف التفاصيل ←</a>
-            </div>
-        </article>
-
-        <article class="trip-card premium-trip">
-            <div class="trip-image">🏖️</div>
-            <div class="trip-content">
-                <span class="trip-tag">رحلات ترفيهية</span>
-                <h3>رحلات ترفيهية</h3>
-                <p>
-                    برامج سياحية للعائلات والأصدقاء والأفراد
-                    لقضاء وقت ممتع واكتشاف أماكن جديدة.
-                </p>
-                <div class="trip-meta">
-                    <span>👨‍👩‍👧‍👦 للعائلات</span>
-                    <span>🏖️ وجهات متنوعة</span>
+                <div class="trip-actions">
+                    <a class="trip-book" href="#trip-details" onclick="showTrip('umrah');return false">شوف التفاصيل</a>
                 </div>
-                <a class="trip-btn" href="#trip-details" onclick="showTrip('leisure');return false">شوف التفاصيل ←</a>
             </div>
         </article>
 
+        <article class="trip-card premium-trip" data-category="tourism leisure" data-trip-id="thailand">
+            <div class="trip-image">🇹🇭</div>
+            <div class="trip-content">
+                <span class="trip-tag">سياحة • ترفيهية</span>
+                <h3>رحلات تايلاند</h3>
+                <p>بانكوك وبوكيت وكرابي لمحبي الشواطئ والتجارب والترفيه.</p>
+                <div class="trip-meta">
+                    <span>🏖️ شواطئ وجزر</span>
+                    <span>📍 تايلاند</span>
+                </div>
+                <div class="trip-actions">
+                    <a class="trip-book" href="#trip-details" onclick="showTrip('thailand');return false">شوف التفاصيل</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="trip-card premium-trip" data-category="tourism leisure" data-trip-id="greece">
+            <div class="trip-image">🇬🇷</div>
+            <div class="trip-content">
+                <span class="trip-tag">سياحة • ترفيهية</span>
+                <h3>رحلات اليونان</h3>
+                <p>أثينا وسانتوريني وميكونوس مع تجربة تجمع بين البحر والثقافة.</p>
+                <div class="trip-meta">
+                    <span>🏝️ جزر وشواطئ</span>
+                    <span>📍 اليونان</span>
+                </div>
+                <div class="trip-actions">
+                    <a class="trip-book" href="#trip-details" onclick="showTrip('greece');return false">شوف التفاصيل</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="trip-card premium-trip" data-category="tourism family leisure" data-trip-id="malaysia">
+            <div class="trip-image">🇲🇾</div>
+            <div class="trip-content">
+                <span class="trip-tag">سياحة • عائلية</span>
+                <h3>رحلات ماليزيا</h3>
+                <p>كوالالمبور ولنكاوي وبينانج بين المدن الحديثة والطبيعة والجزر.</p>
+                <div class="trip-meta">
+                    <span>🌴 طبيعة وجزر</span>
+                    <span>📍 ماليزيا</span>
+                </div>
+                <div class="trip-actions">
+                    <a class="trip-book" href="#trip-details" onclick="showTrip('malaysia');return false">شوف التفاصيل</a>
+                </div>
+            </div>
+        </article>
+
+    </div>
+
+    <div class="trip-catalog-empty" id="tripCatalogEmpty" hidden>
+        لا توجد رحلات في هذا التصنيف حاليًا.
     </div>
 
 </section>
@@ -750,7 +806,54 @@ const DEST_INFO = {
 </script>
 
 <div id="trip-details" class="dest-modal" hidden><div class="dest-modal__backdrop" onclick="closeTrip()"></div><div class="dest-modal__box"><button class="dest-modal__close" onclick="closeTrip()">×</button><span>رحّال للسفر والرحلات</span><h3 id="trip-title"></h3><p id="trip-desc"></p><div class="trip-meta"><span>💰 السعر: <b>استفسر عن السعر</b></span><span>📋 التفاصيل: حسب البرنامج</span></div><h4>ماذا تشمل الرحلة؟</h4><ul id="trip-list"></ul><a id="trip-wa" class="trip-book" target="_blank" rel="noopener">استفسر عبر واتساب</a></div></div><script>
-function showTrip(t){var d={world:["رحلات حول العالم","برامج سياحية متنوعة إلى وجهات عالمية.","اختيار الوجهة والمدة والخدمات المناسبة","خيارات للأفراد والعائلات"],umrah:["رحلات العمرة","برامج عمرة إلى مكة والمدينة حسب الموسم والبرنامج.","خيارات مختلفة حسب الموسم","خدمات وفنادق حسب الباقة"],leisure:["رحلات ترفيهية","رحلات للعائلات والأصدقاء والأفراد إلى وجهات متنوعة.","برامج ترفيهية متنوعة","اختيار المدة والخدمات"]}[t];document.getElementById("trip-title").textContent=d[0];document.getElementById("trip-desc").textContent=d[1];document.getElementById("trip-list").innerHTML="<li>✓ "+d[2]+"</li><li>✓ "+d[3]+"</li><li>✓ تفاصيل السعر والخدمات عند الاستفسار</li>";document.getElementById("trip-wa").href=waLink("مرحبًا رحّال، أرغب في الاستفسار عن "+d[0]);document.getElementById("trip-details").hidden=false;document.body.classList.add("modal-open")}
+function showTrip(t){
+var d={
+turkey:["رحلات تركيا","إسطنبول وطرابزون وأنطاليا ضمن برامج سياحية قابلة للتخصيص.","اختيار المدن والمدة المناسبة","فنادق وخدمات حسب الباقة"],
+dubai:["رحلات الإمارات","دبي وأبوظبي والشارقة مع برامج تناسب العائلات والأصدقاء.","اختيار البرنامج والمدة","فنادق وخدمات حسب الباقة"],
+umrah:["رحلات العمرة","برامج عمرة إلى مكة والمدينة حسب الموسم والبرنامج المتاح.","خيارات مختلفة حسب الموسم","فنادق وخدمات حسب الباقة"],
+thailand:["رحلات تايلاند","بانكوك وبوكيت وكرابي لعشاق الشواطئ والجزر والترفيه.","اختيار الوجهات والمدة","خدمات وفنادق حسب البرنامج"],
+greece:["رحلات اليونان","أثينا وسانتوريني وميكونوس بين الجزر والثقافة والشواطئ.","اختيار الجزر والمدة","خدمات وفنادق حسب البرنامج"],
+malaysia:["رحلات ماليزيا","كوالالمبور ولنكاوي وبينانج بين الطبيعة والتسوق والجزر.","اختيار المدن والمدة","خدمات وفنادق حسب البرنامج"]
+}[t];
+if(!d)return;
+document.getElementById("trip-title").textContent=d[0];
+document.getElementById("trip-desc").textContent=d[1];
+document.getElementById("trip-list").innerHTML="<li>✓ "+d[2]+"</li><li>✓ "+d[3]+"</li><li>✓ تفاصيل السعر والخدمات عند الاستفسار</li>";
+document.getElementById("trip-wa").href=waLink("مرحبًا رحّال، أرغب في الاستفسار عن "+d[0]);
+document.getElementById("trip-details").hidden=false;
+document.body.classList.add("modal-open")
+}
 function closeTrip(){document.getElementById("trip-details").hidden=true;document.body.classList.remove("modal-open")}
-</script></body>
+</script>
+<script>
+/* TRIP_CATALOG_FILTER */
+(function(){
+  const buttons = document.querySelectorAll(".trip-filter");
+  const cards = document.querySelectorAll("#tripCatalog .trip-card");
+  const empty = document.getElementById("tripCatalogEmpty");
+
+  buttons.forEach(function(button){
+    button.addEventListener("click", function(){
+      const filter = button.getAttribute("data-filter");
+
+      buttons.forEach(function(b){ b.classList.remove("active"); });
+      button.classList.add("active");
+
+      let visible = 0;
+
+      cards.forEach(function(card){
+        const categories = (card.getAttribute("data-category") || "").split(" ");
+        const show = filter === "all" || categories.indexOf(filter) !== -1;
+
+        card.hidden = !show;
+        if(show) visible++;
+      });
+
+      if(empty) empty.hidden = visible !== 0;
+    });
+  });
+})();
+</script>
+
+</body>
 </html>
