@@ -2374,3 +2374,86 @@ footer .rahhal-word,
     border-radius:10px 10px 10px 3px;
   }
 }
+
+
+/* ===== FINAL SEARCH VALIDATION ===== */
+.trip-search select.search-error,
+.trip-search input.search-error{
+  border:2px solid #d93025 !important;
+  box-shadow:0 0 0 3px rgba(217,48,37,.10) !important;
+  background:#fff8f7 !important;
+}
+
+.ready-trip{
+  padding:70px 20px;
+  text-align:center;
+  background:linear-gradient(135deg,#17344d,#244d6b);
+  color:#fff;
+}
+
+.ready-trip__inner{
+  max-width:850px;
+  margin:auto;
+}
+
+.ready-trip__inner > span{
+  display:inline-block;
+  margin-bottom:10px;
+  font-weight:800;
+  opacity:.9;
+}
+
+.ready-trip__inner h2{
+  margin:0 0 12px;
+  font-size:clamp(30px,5vw,48px);
+  font-weight:950;
+}
+
+.ready-trip__inner p{
+  max-width:650px;
+  margin:0 auto 25px;
+  line-height:1.9;
+  opacity:.92;
+}
+
+.ready-trip__actions{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.ready-trip__actions a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:190px;
+  padding:14px 22px;
+  border-radius:14px;
+  text-decoration:none;
+  font-weight:900;
+}
+
+.ready-trip__whatsapp{
+  background:#fff;
+  color:#17344d;
+}
+
+.ready-trip__phone{
+  border:1px solid rgba(255,255,255,.35);
+  color:#fff;
+}
+
+@media(max-width:600px){
+  .ready-trip{
+    padding:55px 16px;
+  }
+
+  .ready-trip__actions{
+    flex-direction:column;
+  }
+
+  .ready-trip__actions a{
+    width:100%;
+  }
+}

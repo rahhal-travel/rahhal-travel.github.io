@@ -434,6 +434,29 @@
     </div>
 </section>
 
+
+<section class="ready-trip" id="ready-trip">
+  <div class="ready-trip__inner">
+    <span>رحّال معاك خطوة بخطوة</span>
+    <h2>جاهز تبدأ رحلتك؟</h2>
+    <p>تواصل معنا واختار الطريقة المناسبة لك، وإحنا نساعدك في تفاصيل الرحلة والبرنامج والسعر.</p>
+
+    <div class="ready-trip__actions">
+      <a class="ready-trip__whatsapp"
+         href="https://wa.me/201019483858"
+         target="_blank"
+         rel="noopener">
+        💬 تواصل عبر واتساب
+      </a>
+
+      <a class="ready-trip__phone"
+         href="tel:+201117888955">
+        📞 اتصل بنا
+      </a>
+    </div>
+  </div>
+</section>
+
 <section class="cta contact-premium" id="contact">
 
     <div class="contact-wrapper">
@@ -801,24 +824,7 @@ const DEST_INFO = {
 </script>
 
 
-<script>
-/* SEARCH_TOP */
-(function(){
-  var pill = document.getElementById("searchPill");
-  var panel = document.getElementById("search");
-  var hdr = document.querySelector(".header");
-  if(!pill || !panel) return;
-  function openP(){ panel.style.top = (hdr ? hdr.offsetHeight : 70) + "px"; panel.classList.add("is-open"); }
-  function closeP(){ panel.classList.remove("is-open"); }
-  pill.addEventListener("click", function(){ panel.classList.contains("is-open") ? closeP() : openP(); });
-  document.addEventListener("click", function(e){
-    if(panel.classList.contains("is-open") && !panel.contains(e.target) && !pill.contains(e.target)) closeP();
-  });
 
-  if(b) b.addEventListener("click", closeP);
-  document.addEventListener("keydown", function(e){ if(e.key === "Escape") closeP(); });
-})();
-</script>
 
 <div id="trip-details" class="dest-modal" hidden><div class="dest-modal__backdrop" onclick="closeTrip()"></div><div class="dest-modal__box"><button class="dest-modal__close" onclick="closeTrip()">×</button><span>رحّال للسفر والرحلات</span><h3 id="trip-title"></h3><p id="trip-desc"></p><div class="trip-meta"><span>💰 السعر: <b>استفسر عن السعر</b></span><span>📋 التفاصيل: حسب البرنامج</span></div><h4>ماذا تشمل الرحلة؟</h4><ul id="trip-list"></ul><a id="trip-wa" class="trip-book" target="_blank" rel="noopener">استفسر عبر واتساب</a></div></div><script>
 function showTrip(t){
@@ -899,134 +905,70 @@ function closeTrip(){document.getElementById("trip-details").hidden=true;documen
 </script>
 
 
-<script>
-/* SEARCH_FINAL */
-(function(){
 
-  if(!btn) return;
 
-  btn.addEventListener("click", function(e){
-    e.preventDefault();
 
-    const search = document.getElementById("tripSearch") ||
-                   document.querySelector(".trip-search");
 
-    if(!search) return;
-
-    const selects = search.querySelectorAll("select");
-    let selected = false;
-
-    selects.forEach(function(select){
-      if(select.value && select.value.trim() !== "" &&
-         select.value !== "all" &&
-         select.value !== "اختر") {
-        selected = true;
-      }
-    });
-
-    /*
-      لو مفيش أي اختيار:
-      لا انتقال، لا واتساب، لا رسالة.
-    */
-    if(!selected) return;
-
-    const params = [];
-
-    selects.forEach(function(select){
-      if(select.value && select.value.trim() !== ""){
-        params.push(select.value.trim());
-      }
-    });
-
-    const message =
-      "مرحبًا رحّال، أرغب في الاستفسار عن رحلة مناسبة لي." +
-      (params.length ? "\nاختياراتي: " + params.join(" - ") : "");
-
-    if(typeof RAHHAL_WHATSAPP !== "undefined" && RAHHAL_WHATSAPP){
-      window.open(
-        "https://wa.me/" + RAHHAL_WHATSAPP +
-        "?text=" + encodeURIComponent(message),
-        "_blank"
-      );
-    }
-  });
-})();
-</script>
 
 
 <script>
-/* RAHHAL_SEARCH_FINAL */
+/* RAHHAL_SEARCH_ONE_FINAL */
 (function(){
   var btn = document.getElementById("tsBtn");
-  if(!btn) return;
+  var searchBox = document.querySelector(".trip-search");
+
+  if(!btn || !searchBox) return;
 
   btn.type = "button";
 
   btn.addEventListener("click", function(e){
     e.preventDefault();
-    e.stopPropagation();
+    e.stopImmediatePropagation();
 
-    /*
-      البحث لا يفعل أي شيء إطلاقًا إذا لم يتم اختيار أي قيمة.
-      لا واتساب، لا صفحة خارجية، لا انتقال.
-    */
-    var selects = document.querySelectorAll(".trip-search select");
-    var chosen = [];
+    var fields = searchBox.querySelectorAll("select, input");
 
-    selects.forEach(function(select){
-      var value = (select.value || "").trim();
+    var valid = true;
 
-      if(
-        value &&
-        value !== "all" &&
-        value !== "اختر" &&
-        value !== "اختر الوجهة" &&
-        value !== "اختر النوع" &&
-        value !== "اختر المدة"
-      ){
-        chosen.push(value);
+    fields.forEach(function(field){
+      field.classList.remove("search-error");
+
+      if(field.required && !String(field.value || "").trim()){
+        field.classList.add("search-error");
+        valid = false;
       }
     });
 
-    if(chosen.length === 0){
+    /*
+      لو فيه خانة ناقصة:
+      نوقف هنا نهائيًا.
+      لا واتساب.
+      لا صفحة خارجية.
+      لا انتقال.
+    */
+    if(!valid){
+      var firstError = searchBox.querySelector(".search-error");
+
+      if(firstError){
+        firstError.scrollIntoView({
+          behavior:"smooth",
+          block:"center"
+        });
+        firstError.focus();
+      }
+
       return false;
     }
 
     /*
-      عند وجود اختيار:
-      نعرض الرحلات الموجودة بالفعل داخل الموقع.
-      لا نرسل المستخدم لواتساب.
+      كل الخانات المطلوبة مكتملة:
+      نذهب إلى "جاهز تبدأ رحلتك؟"
     */
-    var cards = document.querySelectorAll(".trip-card");
-    var found = false;
+    var ready = document.getElementById("ready-trip");
 
-    cards.forEach(function(card){
-      var text = (card.innerText || "").toLowerCase();
-      var match = chosen.some(function(value){
-        return text.indexOf(value.toLowerCase()) !== -1;
-      });
-
-      card.style.display = match ? "" : "none";
-
-      if(match) found = true;
-    });
-
-    var trips = document.getElementById("trips");
-
-    if(trips){
-      trips.scrollIntoView({
+    if(ready){
+      ready.scrollIntoView({
         behavior:"smooth",
         block:"start"
-      });
-    }
-
-    /*
-      لو البحث لم يجد تطابقًا، نعرض كل الرحلات بدل تحويل العميل
-      إلى واتساب أو صفحة خارجية.
-    */
-    if(!found){
-      cards.forEach(function(card){
-        card.style.display = "";
       });
     }
 
